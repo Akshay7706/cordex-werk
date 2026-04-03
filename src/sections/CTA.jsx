@@ -79,9 +79,15 @@ export default function CTA() {
         e.target.reset();
         setTimeout(() => setStatus(''), 5000);
       } else {
-        const errorData = await response.json();
+        let errorMsg = "Server Error";
+        try {
+           const errorData = await response.json();
+           errorMsg = errorData.error || errorMsg;
+        } catch(e) {
+           errorMsg = await response.text();
+        }
         setStatus('error');
-        alert("Transmission Failed: " + (errorData.error || "Server Error"));
+        alert("Transmission Failed: " + errorMsg);
       }
     } catch (error) {
       setStatus('error');
