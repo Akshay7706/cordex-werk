@@ -18,17 +18,25 @@ app.use(cors());
 app.use(express.json());
 
 // Initialize Supabase Client
+let supabase;
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
   console.error('CRITICAL: Supabase keys are missing in .env file!');
-  process.exit(1);
+} else {
+  supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
+  console.log('Connected to Supabase Cloud Database.');
 }
-
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
-console.log('Connected to Supabase Cloud Database.');
 
 // =======================
 // API ROUTES
 // =======================
+
+// Database Check Middleware
+app.use('/api', (req, res, next) => {
+  if (!supabase) {
+    return res.status(500).json({ error: 'Database not connected. Please set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in Vercel Environment Variables.' });
+  }
+  next();
+});
 
 // 1. CONTACT FORM ENDPOINT
 app.post('/api/contact', async (req, res) => {
@@ -171,7 +179,12 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Cordex Werk Single-Node Stack running on http://localhost:${PORT}`);
-  console.log(`Backend and Frontend combined.`);
-});
+// Production Serving in standard node (Render/Local)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Cordex Werk Single-Node Stack running on http://localhost:${PORT}`);
+  });
+}
+
+// Vercel Serverless Export
+export default app;
