@@ -1,14 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 
 dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -167,23 +163,23 @@ app.get('/api/orders/:userId', async (req, res) => {
   res.json(data);
 });
 
-// =======================
-// PRODUCTION SERVING
-// =======================
-// Serve static frontend files from 'dist' folder
-const distPath = path.join(__dirname, 'dist');
-app.use(express.static(distPath));
+// PRODUCTION SERVING - ONLY IF NOT ON VERCEL
+if (!process.env.VERCEL) {
+  // Serve static frontend files from 'dist' folder locally or on Render
+  const distPath = path.join(process.cwd(), 'dist');
+  app.use(express.static(distPath));
 
-// Catch-all route to serve React's index.html for all non-API paths
-app.get('*', (req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
-});
-
-// Production Serving in standard node (Render/Local)
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Cordex Werk Single-Node Stack running on http://localhost:${PORT}`);
+  // Catch-all route to serve React's index.html for all non-API paths
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'));
   });
+
+  // Start the server
+  if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+      console.log(`Cordex Werk Single-Node Stack running on http://localhost:${PORT}`);
+    });
+  }
 }
 
 // Vercel Serverless Export
