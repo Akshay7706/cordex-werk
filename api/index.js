@@ -170,7 +170,7 @@ if (!process.env.VERCEL) {
   app.use(express.static(distPath));
 
   // Catch-all route to serve React's index.html for all non-API paths
-  app.get('*', (req, res) => {
+  app.use((req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
   });
 
