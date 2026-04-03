@@ -79,13 +79,14 @@ export default function CTA() {
         e.target.reset();
         setTimeout(() => setStatus(''), 5000);
       } else {
+        const errorData = await response.json();
         setStatus('error');
-        alert("Server failed to process transmission.");
+        alert("Transmission Failed: " + (errorData.error || "Server Error"));
       }
     } catch (error) {
       setStatus('error');
       console.error(error);
-      alert("Failed to reach server. Ensure database is running.");
+      alert("Failed to reach server. Error: " + error.message);
     }
   };
 
