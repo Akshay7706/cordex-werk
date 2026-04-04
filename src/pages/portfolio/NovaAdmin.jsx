@@ -31,7 +31,7 @@ export default function NovaAdmin() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/products');
+      const res = await fetch('/api/products');
       if (res.ok) {
         const data = await res.json();
         setProducts(data);
@@ -45,7 +45,7 @@ export default function NovaAdmin() {
     e.preventDefault();
     setError('');
     try {
-      const res = await fetch('http://localhost:3000/api/login', {
+      const res = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -64,7 +64,7 @@ export default function NovaAdmin() {
   const handleAddProduct = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:3000/api/products', {
+      const res = await fetch('/api/products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

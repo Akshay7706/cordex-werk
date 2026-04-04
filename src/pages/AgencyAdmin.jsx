@@ -24,7 +24,7 @@ export default function AgencyAdmin() {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/messages');
+      const res = await fetch('/api/messages');
       if (res.ok) {
         const data = await res.json();
         setMessages(data);
@@ -38,7 +38,7 @@ export default function AgencyAdmin() {
     e.preventDefault();
     setError('');
     try {
-      const res = await fetch('http://localhost:3000/api/login', {
+      const res = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -57,7 +57,7 @@ export default function AgencyAdmin() {
   const handleDelete = async (id, e) => {
     if(e) e.stopPropagation();
     try {
-      const res = await fetch(`http://localhost:3000/api/messages/${id}`, {
+      const res = await fetch(`/api/messages/${id}`, {
         method: 'DELETE'
       });
       if (res.ok) {
