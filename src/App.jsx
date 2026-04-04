@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import Landing from './pages/Landing';
 import SaasDashboard from './pages/portfolio/SaasDashboard';
 import AetherAiStudio from './pages/portfolio/AetherAiStudio';
@@ -49,6 +50,7 @@ function App() {
       <BrowserRouter>
         <AnimatedRoutes />
       </BrowserRouter>
+      <Analytics />
     </>
   );
 }
