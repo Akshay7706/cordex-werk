@@ -41,7 +41,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-brand-dark">
+    <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-brand-dark">
       {/* Background Layers */}
       <Starfield />
       <motion.div style={{ transform: gridTransform }} className="absolute inset-[-10%] w-[120%] h-[120%] bg-grid pointer-events-none z-0 opacity-40"></motion.div>
@@ -57,7 +57,7 @@ export default function Hero() {
 
       <div className="absolute inset-0 z-10 pointer-events-none flex flex-col justify-between p-6 md:p-12">
         {/* Top Header Layer */}
-        <div className="flex justify-between items-start w-full mt-32 md:mt-12">
+        <div className="flex justify-between items-start w-full mt-24 md:mt-12">
            <motion.div custom={0} initial="hidden" animate="visible" variants={textVariants} className="inline-block px-4 py-1.5 rounded-full border border-brand-accent/20 bg-brand-dark/50 backdrop-blur-md pointer-events-auto">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse"></span>

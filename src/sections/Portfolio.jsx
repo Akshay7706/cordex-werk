@@ -116,9 +116,11 @@ export default function Portfolio() {
         </div>
 
         {isMobile ? (
-          <div className="relative z-10 space-y-8">
+          <div className="relative z-10 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8 no-scrollbar scroll-smooth">
             {projects.map((project, idx) => (
-              <ProjectCard key={idx} project={project} isMobile={true} />
+              <div key={idx} className="w-[85vw] flex-shrink-0 snap-center">
+                <ProjectCard project={project} isMobile={true} />
+              </div>
             ))}
           </div>
         ) : (

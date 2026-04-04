@@ -126,7 +126,7 @@ export default function Services() {
   const previewImages = services.map(s => s.details.image);
 
   return (
-    <section id="services" className="py-28 relative z-10 bg-brand-dark overflow-hidden border-y border-white/5">
+    <section id="services" className={`relative z-10 bg-brand-dark overflow-hidden border-y border-white/5 ${isMobile ? 'py-12' : 'py-28'}`}>
       <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
 
       {/* Side Panel Overlay */}
@@ -179,7 +179,7 @@ export default function Services() {
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => setActiveService(service)}
-                className="group relative border-t border-white/10 py-10 cursor-pointer"
+                className={`group relative border-t border-white/10 ${isMobile ? 'py-6' : 'py-10'} cursor-pointer`}
               >
                 {/* Row hover glow */}
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg" />

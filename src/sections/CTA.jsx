@@ -102,13 +102,13 @@ export default function CTA() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-32 relative z-10 bg-brand-dark overflow-hidden border-t border-white/5">
+    <section id="contact" className="py-12 md:py-32 relative z-10 bg-brand-dark overflow-hidden border-t border-white/5">
       
       <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none z-0"></div>
       <div className="absolute left-[30%] top-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-brand-accent/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full max-w-[1400px]">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
           
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -244,7 +244,7 @@ export default function CTA() {
           </motion.div>
         </div>
 
-        <div className="mt-40 pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+        <div className="mt-24 md:mt-40 pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
             <div className="max-w-md">
                 <h4 className="text-white font-bold text-lg mb-2 tracking-tight">Subscribe to the Matrix.</h4>
                 <p className="text-gray-500 text-sm mb-6">Receive irregular updates on digital engineering and elite SaaS architecture.</p>

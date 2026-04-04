@@ -27,7 +27,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-32 relative z-10 bg-brand-dark overflow-hidden border-t border-white/5">
+    <section id="features" className="py-12 md:py-32 relative z-10 bg-brand-dark overflow-hidden border-t border-white/5">
       
       {/* Background glow & Grid */}
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
@@ -51,7 +51,7 @@ export default function Features() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
             >
-              <AnimatedCard className="h-full flex flex-col items-center text-center p-8 bg-glass-gradient border border-white/5 rounded-3xl group hover:border-brand-secondary/50 transition-all duration-300 relative overflow-hidden">
+              <AnimatedCard className="h-full flex flex-col items-center text-center p-6 md:p-8 bg-glass-gradient border border-white/5 rounded-3xl group hover:border-brand-secondary/50 transition-all duration-300 relative overflow-hidden">
                 {/* Hover Glow */}
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-brand-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[30px] rounded-full pointer-events-none"></div>
                 

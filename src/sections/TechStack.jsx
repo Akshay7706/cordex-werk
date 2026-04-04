@@ -16,10 +16,10 @@ export default function TechStack() {
   const marqueeStack = [...stack, ...stack, ...stack];
 
   return (
-    <section className="py-24 relative z-10 bg-brand-dark border-y border-white/5 overflow-hidden">
+    <section className="py-10 md:py-24 relative z-10 bg-brand-dark border-y border-white/5 overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
       
-      <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center mb-16">
+      <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center mb-10 md:mb-16">
         <h2 className="text-sm font-bold uppercase tracking-widest text-brand-accent mb-3">The Arsenal</h2>
         <h3 className="text-3xl md:text-5xl font-heading font-black text-white">Engineered with Precision.</h3>
       </div>

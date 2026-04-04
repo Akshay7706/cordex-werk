@@ -14,7 +14,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className={`relative z-10 bg-brand-dark border-y border-white/5 ${isMobile ? 'py-16' : 'py-28'}`}>
+    <section id="about" className={`relative z-10 bg-brand-dark border-y border-white/5 ${isMobile ? 'py-12' : 'py-28'}`}>
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
