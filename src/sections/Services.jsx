@@ -54,17 +54,17 @@ function SidePanel({ service, onClose }) {
         exit={{ x: '100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-xl bg-brand-dark border-l border-white/10 h-full overflow-y-auto p-12 relative cursor-default"
+        className="w-full md:max-w-xl bg-brand-dark border-l border-white/10 h-full overflow-y-auto p-6 md:p-12 relative cursor-default"
       >
         <button 
           onClick={onClose}
-          className="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors"
+          className="absolute top-6 right-6 md:top-8 md:right-8 text-gray-500 hover:text-white transition-colors"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
 
-        <span className="text-brand-accent text-xs font-bold tracking-[0.2em] uppercase mb-4 block">{service.tag}</span>
-        <h2 className="text-4xl md:text-5xl font-heading font-black text-white leading-none mb-8">{service.title}</h2>
+        <span className="text-brand-accent text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-4 block">{service.tag}</span>
+        <h2 className="text-3xl md:text-5xl font-heading font-black text-white leading-none mb-8">{service.title}</h2>
         
         <div className="aspect-video rounded-xl overflow-hidden mb-10 border border-white/5">
            <img src={service.details.image} alt={service.title} className="w-full h-full object-cover" />
@@ -150,7 +150,7 @@ export default function Services() {
             <span className="text-brand-accent text-xs font-bold tracking-[0.25em] uppercase mb-3 block">
               Capabilities
             </span>
-            <h2 className="text-5xl md:text-7xl font-heading font-black text-white tracking-tighter leading-none">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-heading font-black text-white tracking-tighter leading-tight md:leading-none">
               Digital<br />Ecosystems.
             </h2>
           </motion.div>
@@ -189,7 +189,7 @@ export default function Services() {
                     {service.tag}
                   </span>
 
-                  <h3 className="flex-1 text-2xl md:text-4xl lg:text-5xl font-heading font-black uppercase tracking-tighter text-gray-500/40 group-hover:text-white transition-all duration-500 group-hover:translate-x-2 leading-tight">
+                  <h3 className="flex-1 text-2xl sm:text-3xl md:text-5xl font-heading font-black uppercase tracking-tighter text-gray-500/40 group-hover:text-white transition-all duration-500 group-hover:translate-x-2 leading-tight">
                     {service.title}
                   </h3>
 

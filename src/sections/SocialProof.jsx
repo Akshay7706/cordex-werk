@@ -43,11 +43,11 @@ export default function SocialProof() {
          <div className="text-center mb-12">
             <h3 className="text-sm font-bold uppercase tracking-[0.25em] text-gray-500 mb-2">Powering the Future</h3>
          </div>
-         <div className="relative w-full overflow-hidden mask-edges py-10">
+         <div className="relative w-full overflow-hidden mask-edges py-6 md:py-10">
             <div className="flex animate-marquee hover:[animation-play-state:paused] whitespace-nowrap">
               {marqueeLogos.map((brand, idx) => (
-                <div key={idx} className="f-center mx-12 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                  <img src={brand.logo} alt={brand.name} className="h-6 md:h-8 object-contain invert" />
+                <div key={idx} className="f-center mx-8 md:mx-12 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                  <img src={brand.logo} alt={brand.name} className="h-5 md:h-8 object-contain invert" />
                 </div>
               ))}
             </div>
@@ -57,7 +57,7 @@ export default function SocialProof() {
       <div className="container mx-auto px-6 lg:px-16 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="w-full lg:w-1/3 text-left">
-            <h2 className="text-4xl md:text-5xl font-heading font-black text-white leading-none tracking-tighter mb-6">
+            <h2 className="text-3xl sm:text-5xl font-heading font-black text-white leading-none tracking-tighter mb-6">
               THE<br />MATRIX<br />TRUSTS.
             </h2>
             <div className="flex gap-1 mb-6">
@@ -80,9 +80,9 @@ export default function SocialProof() {
                 transition={{ delay: i * 0.1 }}
                 className={`p-8 bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl relative group hover:border-brand-accent/30 transition-all duration-500 ${i === 0 ? 'md:col-span-1' : (i === 1 ? 'md:col-span-1' : 'md:col-span-2')}`}
               >
-                <Quote className="absolute top-8 right-8 w-12 h-12 text-white/5 group-hover:text-brand-accent/10 transition-colors pointer-events-none" />
+                <Quote className="absolute top-6 right-6 md:top-8 md:right-8 w-10 h-10 md:w-12 md:h-12 text-white/5 group-hover:text-brand-accent/10 transition-colors pointer-events-none" />
                 
-                <p className="text-gray-300 font-light leading-relaxed mb-10 text-lg relative z-10">"{t.content}"</p>
+                <p className="text-gray-300 font-light leading-relaxed mb-8 md:mb-10 text-base md:text-lg relative z-10">"{t.content}"</p>
                 
                 <div className="flex items-center gap-4">
                   <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full ring-2 ring-white/10 group-hover:ring-brand-accent/30 transition-all" />

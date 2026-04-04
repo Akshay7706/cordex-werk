@@ -47,11 +47,11 @@ export default function Hero() {
 
       <div className="absolute inset-0 z-10 pointer-events-none flex flex-col justify-between p-6 md:p-12">
         {/* Top Header Layer */}
-        <div className="flex justify-between items-start w-full mt-24 md:mt-12">
+        <div className="flex justify-between items-start w-full mt-32 md:mt-12">
            <motion.div custom={0} initial="hidden" animate="visible" variants={textVariants} className="inline-block px-4 py-1.5 rounded-full border border-brand-accent/20 bg-brand-dark/50 backdrop-blur-md pointer-events-auto">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse"></span>
-              <span className="text-[10px] font-bold tracking-[0.2em] text-brand-accent uppercase">
+              <span className="text-[9px] md:text-[10px] font-bold tracking-[0.2em] text-brand-accent uppercase">
                 System Active
               </span>
             </div>
@@ -59,27 +59,26 @@ export default function Hero() {
         </div>
 
         {/* Bottom Layer */}
-        <div className="flex flex-col md:flex-row justify-between items-end w-full pb-8">
+        <div className="flex flex-col md:flex-row justify-between items-end w-full pb-10 md:pb-8">
           
-          <motion.div custom={1} initial="hidden" animate="visible" variants={textVariants} className="mb-8 md:mb-0 text-left">
-             <h1 className="text-4xl md:text-7xl font-heading font-black text-white leading-none tracking-tighter opacity-90 drop-shadow-2xl">
+          <motion.div custom={1} initial="hidden" animate="visible" variants={textVariants} className="mb-10 md:mb-0 text-left">
+             <h1 className="text-3xl sm:text-5xl md:text-7xl font-heading font-black text-white leading-none tracking-tighter opacity-90 drop-shadow-2xl">
                <ScrambleText text="CORDEX" />
              </h1>
-             <p className="text-gray-400 text-[10px] uppercase tracking-[0.3em] font-bold mt-3">
+             <p className="text-gray-400 text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold mt-3">
                <ScrambleText text="DIGITAL ARCHITECTURE" />
              </p>
           </motion.div>
 
-          <motion.div custom={2} initial="hidden" animate="visible" variants={textVariants} className="pointer-events-auto flex items-center gap-6">
-            <a href="#portfolio" className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 hover:text-white transition-colors">
+          <motion.div custom={2} initial="hidden" animate="visible" variants={textVariants} className="pointer-events-auto flex items-center gap-4 md:gap-6">
+            <a href="#portfolio" className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 hover:text-white transition-colors">
               Explore Projects
             </a>
-            <div className="w-12 h-[1px] bg-white/20"></div>
-            <a href="#contact" className="group flex items-center justify-center w-12 h-12 rounded-full border border-white/20 hover:border-brand-accent bg-transparent hover:bg-brand-accent/10 transition-all duration-300">
-               <svg className="w-4 h-4 text-white group-hover:text-brand-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <div className="w-8 md:w-12 h-[1px] bg-white/20"></div>
+            <a href="#contact" className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 hover:border-brand-accent bg-transparent hover:bg-brand-accent/10 transition-all duration-300">
+               <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-white group-hover:text-brand-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </a>
           </motion.div>
-
         </div>
       </div>
     </section>

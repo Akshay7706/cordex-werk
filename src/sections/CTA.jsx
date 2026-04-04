@@ -36,7 +36,7 @@ function MagneticButton({ children, href }) {
       style={{ x: springX, y: springY }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group inline-flex items-center justify-center w-36 h-36 rounded-full border border-white/20 hover:border-brand-accent bg-transparent hover:bg-brand-accent/10 transition-colors duration-300"
+      className="group inline-flex items-center justify-center w-28 h-28 md:w-36 md:h-36 rounded-full border border-white/20 hover:border-brand-accent bg-transparent hover:bg-brand-accent/10 transition-colors duration-300"
       onClick={() => document.getElementById('name')?.focus()}
     >
       <div className="text-center">
@@ -102,7 +102,7 @@ export default function CTA() {
   };
 
   return (
-    <section id="contact" className="py-32 relative z-10 bg-brand-dark overflow-hidden border-t border-white/5">
+    <section id="contact" className="py-16 md:py-32 relative z-10 bg-brand-dark overflow-hidden border-t border-white/5">
       
       <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none z-0"></div>
       <div className="absolute left-[30%] top-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-brand-accent/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
@@ -118,10 +118,10 @@ export default function CTA() {
             className="flex-1 w-full"
           >
             <div className="mb-8">
-               <span className="text-brand-accent text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
+               <span className="text-brand-accent text-[10px] md:text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
                 Ready to build something elite?
               </span>
-              <h2 className="text-5xl md:text-[5rem] lg:text-[6rem] font-heading font-black mb-6 text-white leading-none tracking-tighter">
+              <h2 className="text-3xl sm:text-5xl md:text-[5rem] lg:text-[6rem] font-heading font-black mb-6 text-white leading-none tracking-tighter">
                 LET'S<br />
                 <span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.4)' }}>
                   BUILD.
