@@ -102,7 +102,7 @@ export default function CTA() {
       
       {/* Background elements */}
       <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none z-0"></div>
-      <div className="absolute left-[30%] top-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-brand-secondary/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+      <div className="absolute left-[0%] md:left-[30%] top-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[800px] md:h-[600px] bg-brand-secondary/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0"></div>
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full max-w-[1400px]">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
@@ -119,7 +119,7 @@ export default function CTA() {
                <span className="text-gray-500 text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
                 Ready to build something elite?
               </span>
-              <h2 className="text-5xl md:text-[5rem] lg:text-[6rem] font-heading font-black mb-6 text-white leading-none tracking-tighter">
+              <h2 className="text-4xl sm:text-5xl md:text-[5rem] lg:text-[6rem] font-heading font-black mb-6 text-white leading-none tracking-tighter">
                 LET'S<br />
                 <span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.4)' }}>
                   BUILD.

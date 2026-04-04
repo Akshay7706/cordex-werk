@@ -11,7 +11,7 @@ import SEOHead from '../components/SEOHead';
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-brand-dark text-white relative">
+    <div className="min-h-screen bg-brand-dark text-white relative overflow-x-hidden max-w-[100vw]">
       <SEOHead title="Home" description="Cordex Werk — a next-generation digital engineering agency crafting high-performance SaaS platforms, AI tools, and immersive e-commerce experiences." />
       <Navbar />
       <main>

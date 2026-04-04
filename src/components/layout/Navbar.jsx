@@ -130,7 +130,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden bg-black/95 backdrop-blur-xl border-t border-white/[0.06]"
+              className="md:hidden overflow-hidden bg-black/95 backdrop-blur-xl border-t border-white/[0.06] w-full"
             >
               <div className="flex flex-col px-6 py-6 gap-5">
                 {navLinks.map(link => (
