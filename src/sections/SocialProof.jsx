@@ -1,13 +1,37 @@
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
+const PartnerLogo = ({ name }) => {
+  const logos = {
+    Nvidia: (
+      <svg role="img" viewBox="0 0 24 24" fill="currentColor" className="h-6 md:h-8"><path d="M11.996 24a12.046 12.046 0 0 1-5.263-1.202l.145-.265c1.493-.038 2.827-.552 4.026-1.543a4.516 4.516 0 0 0 1.636-2.915c.022-.167.016-.333 0-.5a4.576 4.576 0 0 0-1.31-2.9 4.38 4.38 0 0 0-3.056-1.42 4.49 4.49 0 0 0-3.328 1.155 4.58 4.58 0 0 0-1.488 3.5c0 .125.006.248.017.37a4.34 4.34 0 0 0 1.258 2.8c.84.814 1.832 1.353 2.94 1.605l.145.265A12.06 12.06 0 0 1 0 12.004c0-6.627 5.373-12 12-12s12 5.373 12 12-5.373 12-12 12zM6.57 18.232a3.172 3.172 0 0 1 1.03-2.42c.578-.564 1.303-.847 2.176-.847.872 0 1.597.283 2.175.847a3.173 3.173 0 0 1 1.03 2.42 3.173 3.173 0 0 1-1.03 2.42c-.578.564-1.303.847-2.175.847-.873 0-1.598-.283-2.176-.847a3.172 3.172 0 0 1-1.03-2.42zm.843 0c0 .61.218 1.127.654 1.55a2.11 2.11 0 0 0 1.552.636c.594 0 1.111-.212 1.551-.636.44-.423.66-.94.66-1.55a2.112 2.112 0 0 0-.66-1.55c-.44-.424-.957-.636-1.551-.636-.595 0-1.112.212-1.552.636a2.111 2.111 0 0 0-.654 1.55z"/></svg>
+    ),
+    OpenAI: (
+      <svg role="img" viewBox="0 0 24 24" fill="currentColor" className="h-6 md:h-8"><path d="M22.28 7.59a7.485 7.485 0 0 0-.4-4.22c-1.13-2.61-3.69-3.7-6.09-3.37L15.34.09l-.45 2.58A7.447 7.447 0 0 0 9.8 1.17c-2.45-.63-5.28.32-6.62 3.23l-1.35 2.92-1.4 3.01c-.08.18-.08.38 0 .56l1.35 2.92c1.13 2.61 3.69 3.7 6.09 3.37l.45-.06.45-2.58a7.447 7.447 0 0 0 5.09 1.5c2.45.63 5.28-.32 6.62-3.23l1.35-2.92 1.4-3.01a.63.63 0 0 0 0-.56zM15.42 21.05c-1.63 2.61-4.8 3.51-7.46 2.39L5.3 22.06c-1.06-.51-2.01-1.22-2.82-2.12l-.08-.1c-.48-.59-.83-1.25-1.06-1.95L.89 16.5c-1.13-2.61-.43-5.59 1.76-7.42l1.62-.21c.06-.01.1-.03.14-.07L7.43 1.94l.08-.09c.81-.9 1.76-1.61 2.82-2.12l.09-.04c1.06-.51 2.21-.77 3.37-.77s2.31.26 3.37.77l.09.04c1.06.51 2.01 1.22 2.82 2.12l.08.09 3.02 6.87c2.19 1.83 2.89 4.81 1.76 7.42l-.46 1.39c-1.13 2.61-4.3 3.51-6.96 2.39l-2.66-1.38z"/></svg>
+    ),
+    Vercel: (
+      <svg role="img" viewBox="0 0 24 24" fill="currentColor" className="h-6 md:h-8"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>
+    ),
+    Supabase: (
+      <svg role="img" viewBox="0 0 24 24" fill="currentColor" className="h-6 md:h-8"><path d="M21.362 9.354H12V.396L2.638 14.646H12v8.958l9.362-14.25z"/></svg>
+    ),
+    Stripe: (
+      <svg role="img" viewBox="0 0 24 24" fill="currentColor" className="h-6 md:h-8"><path d="M13.962 8.196c0-2.436-1.146-3.805-3.323-3.805-3.13 0-3.666 1.802-3.666 3.125 0 2.923 2.915 3.385 4.86 3.96 2.247.669 3.022 1.156 3.022 2.87 0 2.203-1.077 3.555-3.415 3.555-2.82 0-3.83-1.428-3.83-3.238l-.014-.541H4.42v.541c0 3.076 2.115 4.673 5.485 4.673 3.266 0 5.486-1.523 5.486-4.636 0-3.416-3.242-4.045-5.321-4.708-1.583-.502-2.56-.787-2.56-2.14 0-1.776.994-2.868 2.656-2.868 1.954 0 2.71 1.05 2.71 2.333l.006.413h3.09v-.539Z"/></svg>
+    ),
+    DigitalOcean: (
+      <svg role="img" viewBox="0 0 24 24" fill="currentColor" className="h-6 md:h-8"><path d="M12.046 3.504a7.994 7.994 0 0 0-7.989 7.989 7.994 7.994 0 0 0 7.989 7.989 7.994 7.994 0 0 0 7.989-7.989c0-.284-.015-.566-.044-.844h1.769c.221.758.337 1.554.337 2.378 0 5.011-4.062 9.073-9.073 9.073-5.011 0-9.073-4.062-9.073-9.073 0-5.011 4.062-9.073 9.073-9.073.824 0 1.62.116 2.378.337v1.769c-.278-.029-.56-.044-.844-.044zm5.029 1.488a1.002 1.002 0 0 0-1.001 1.001c0 .553.448 1.001 1.001 1.001s1.001-.448 1.001-1.001a1.002 1.002 0 0 0-1.001-1.001zm3.921 5.448H22.5c0-.986-.168-1.93-.473-2.809l-1.45.694c.264.679.423 1.408.423 2.115z"/></svg>
+    ),
+  };
+  return logos[name] || null;
+};
+
 const partners = [
-  { name: 'Nvidia', logo: 'https://cdn.simpleicons.org/nvidia/white' },
-  { name: 'OpenAI', logo: 'https://cdn.simpleicons.org/openai/white' },
-  { name: 'Vercel', logo: 'https://cdn.simpleicons.org/vercel/white' },
-  { name: 'Supabase', logo: 'https://cdn.simpleicons.org/supabase/white' },
-  { name: 'Stripe', logo: 'https://cdn.simpleicons.org/stripe/white' },
-  { name: 'DigitalOcean', logo: 'https://cdn.simpleicons.org/digitalocean/white' },
+  { name: 'Nvidia' },
+  { name: 'OpenAI' },
+  { name: 'Vercel' },
+  { name: 'Supabase' },
+  { name: 'Stripe' },
+  { name: 'DigitalOcean' },
 ];
 
 const testimonials = [
@@ -31,6 +55,15 @@ const testimonials = [
   }
 ];
 
+const partners = [
+  { name: 'Nvidia' },
+  { name: 'OpenAI' },
+  { name: 'Vercel' },
+  { name: 'Supabase' },
+  { name: 'Stripe' },
+  { name: 'DigitalOcean' },
+];
+
 export default function SocialProof() {
   const marqueeLogos = [...partners, ...partners, ...partners];
 
@@ -46,8 +79,8 @@ export default function SocialProof() {
          <div className="relative w-full overflow-hidden mask-edges py-6 md:py-10">
             <div className="flex animate-marquee hover:[animation-play-state:paused] whitespace-nowrap">
               {marqueeLogos.map((brand, idx) => (
-                <div key={idx} className="f-center mx-8 md:mx-12 opacity-40 hover:opacity-100 transition-all duration-300">
-                  <img src={brand.logo} alt={brand.name} className="h-4 md:h-6 object-contain" />
+                <div key={idx} className="f-center mx-8 md:mx-12 opacity-40 hover:opacity-100 transition-all duration-300 text-white">
+                  <PartnerLogo name={brand.name} />
                 </div>
               ))}
             </div>
