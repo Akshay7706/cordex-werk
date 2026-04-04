@@ -46,8 +46,8 @@ export default function SocialProof() {
          <div className="relative w-full overflow-hidden mask-edges py-6 md:py-10">
             <div className="flex animate-marquee hover:[animation-play-state:paused] whitespace-nowrap">
               {marqueeLogos.map((brand, idx) => (
-                <div key={idx} className="f-center mx-8 md:mx-12 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                  <img src={brand.logo} alt={brand.name} className="h-5 md:h-8 object-contain invert" />
+                <div key={idx} className="f-center mx-8 md:mx-12 opacity-40 hover:opacity-100 transition-all duration-300">
+                  <img src={brand.logo} alt={brand.name} className="h-5 md:h-8 object-contain brightness-0 invert" />
                 </div>
               ))}
             </div>
