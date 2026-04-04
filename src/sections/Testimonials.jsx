@@ -5,19 +5,22 @@ const testimonials = [
   {
     name: 'Sarah Chen',
     role: 'Founder @ Aether AI',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150',
     content: 'Cordex transformed our landing page into a conversion engine. Our trial sign-ups increased by 140% in the first month. The 3D interactions are simply unmatched.',
     rating: 5
   },
   {
     name: 'Marcus Thorne',
     role: 'CTO @ Nexus Fintech',
-    content: 'The speed and precision of their engineering are enterprise-grade. We migrated our entire frontend to their architecture and saw an immediate 60% boost in Lighthouse scores.',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150',
+    content: 'The speed and precision of their engineering are enterprise-grade. We migrated our entire frontend to their architecture and saw an immediate 60% boost in conversion velocity.',
     rating: 5
   },
   {
     name: 'Elena Vance',
     role: 'Product Lead @ Skyward SaaS',
-    content: 'Working with Cordex is like having an elite technical strike team. They don\'t just write code; they design systems that scale and convert.',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150',
+    content: 'Working with Cordex is like having an elite technical strike team. They don\'t just write code; they design systems that scale and convert with surgical precision.',
     rating: 5
   }
 ];
@@ -72,9 +75,16 @@ export default function Testimonials() {
                 "{test.content}"
               </p>
 
-              <div className="mt-auto flex flex-col gap-1 border-t border-white/5 pt-6">
-                <h4 className="text-white font-heading font-bold text-lg">{test.name}</h4>
-                <p className="text-brand-accent text-xs font-medium uppercase tracking-widest">{test.role}</p>
+              <div className="mt-auto flex items-center gap-4 border-t border-white/5 pt-6">
+                <img 
+                  src={test.avatar} 
+                  alt={test.name} 
+                  className="w-12 h-12 rounded-full object-cover border border-brand-accent/30 shadow-[0_0_10px_rgba(0,229,255,0.2)]"
+                />
+                <div>
+                  <h4 className="text-white font-heading font-bold text-base leading-tight">{test.name}</h4>
+                  <p className="text-brand-accent text-[9px] font-bold uppercase tracking-[0.2em]">{test.role}</p>
+                </div>
               </div>
             </motion.div>
           ))}

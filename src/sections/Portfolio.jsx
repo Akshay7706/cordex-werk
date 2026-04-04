@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrambleText from '../components/shared/ScrambleText';
 import { useRef, useState, useEffect } from 'react';
@@ -20,6 +20,7 @@ const projects = [
     description: 'High-end banking interface re-engineered for trust and speed. We focused on reducing friction in the KYC flow.',
     problem: 'Low onboarding completion rates due to a complex 12-step verification process.',
     solution: 'Simplified 3-step biometric-first verification with real-time feedback loops.',
+    result: 'Reduced time-to-onboard by 8m, leading to a massive increase in funded accounts.',
     img: project1,
     link: '#'
   },
@@ -30,6 +31,7 @@ const projects = [
     description: 'A dark-themed platform empowering creators to generate visuals using state-of-the-art machine learning models.',
     problem: 'Users were dropping off after the first generation due to slow processing speeds.',
     solution: 'Implemented a custom GPU-aware queuing system and a cinematic loading state.',
+    result: 'Improved user retention and increased monthly recurring revenue by 24%.',
     img: project2,
     link: '#'
   },
@@ -40,60 +42,64 @@ const projects = [
     description: 'Enterprise-grade architecture for businesses demanding market-dominating elite tools.',
     problem: 'Critical data insights were inaccessible to field agents on mobile devices.',
     solution: 'Hybrid responsive dashboard with GLSL-powered data visualizations.',
+    result: 'Daily active users among executive stakeholders increased from 15% to 85%.',
     img: project3,
     link: '#'
   }
 ];
 
 const ProjectCard = ({ project, isMobile }) => (
-  <div className={`group relative flex-shrink-0 overflow-hidden rounded-2xl border border-white/8 hover:border-brand-accent/40 transition-all duration-700 hover:shadow-[0_0_40px_rgba(0,229,255,0.12)] ${
-    isMobile ? 'w-full h-[400px] mb-6' : 'w-[80vw] md:w-[38vw] h-[55vh]'
+  <div className={`group relative flex-shrink-0 overflow-hidden rounded-3xl border border-white/10 hover:border-brand-accent/40 transition-all duration-700 hover:shadow-[0_0_40px_rgba(0,229,255,0.12)] ${
+    isMobile ? 'w-full h-[500px] mb-6' : 'w-[85vw] md:w-[45vw] lg:w-[35vw] h-[65vh]'
   }`}>
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-brand-accent/20 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10" />
-    <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+    <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
     <img
       src={project.img}
       alt={project.title}
-      className={`absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-[2s] ease-out z-0`}
+      className={`absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-110 grayscale-[50%] group-hover:grayscale-0 transition-all duration-[2s] ease-out z-0`}
     />
-    <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-10">
-      <div className="flex flex-wrap gap-2 mb-4">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-black bg-brand-accent px-3 py-1 rounded-full w-max">
+    <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-12">
+      <div className="flex flex-wrap gap-2 mb-6">
+        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-black bg-brand-accent px-3 py-1 rounded-full w-max shadow-[0_0_15px_rgba(37,211,102,0.4)]">
           {project.category}
         </span>
-        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-accent bg-white/5 border border-brand-accent/30 backdrop-blur-md px-3 py-1 rounded-full w-max animate-pulse">
+        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-accent bg-white/5 border border-brand-accent/30 backdrop-blur-md px-3 py-1 rounded-full w-max animate-pulse">
           {project.metrics}
         </span>
       </div>
       
-      <h3 className="text-2xl md:text-4xl font-heading font-black text-white mb-2 group-hover:text-brand-accent transition-colors duration-500 leading-tight">
+      <h3 className="text-3xl md:text-5xl font-heading font-black text-white mb-4 group-hover:text-brand-accent transition-colors duration-500 leading-tight tracking-tighter">
         {project.title}
       </h3>
-      <p className="text-gray-400 text-xs md:text-sm font-light mb-6 line-clamp-2 max-w-md">
-        {project.description}
-      </p>
 
-      <div className={`space-y-3 mb-8 transition-all duration-500 delay-100 ${
+      <div className={`space-y-6 mb-8 transition-all duration-500 delay-100 ${
         isMobile ? 'opacity-100' : 'opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0'
       }`}>
-        <div className="flex gap-3">
-          <span className="text-[10px] font-black text-brand-accent uppercase shrink-0 mt-1">Problem</span>
-          <p className="text-gray-400 text-[11px] leading-relaxed">{project.problem}</p>
+        <div className="flex gap-4">
+          <div className="w-1 h-8 bg-red-500/40 shrink-0 mt-1 rounded-full"></div>
+          <div>
+            <span className="text-[9px] font-black text-gray-500 uppercase tracking-widest block mb-1">The Problem</span>
+            <p className="text-gray-400 text-xs leading-relaxed">{project.problem}</p>
+          </div>
         </div>
-        <div className="flex gap-3">
-          <span className="text-[10px] font-black text-white uppercase shrink-0 mt-1">Solution</span>
-          <p className="text-gray-300 text-[11px] leading-relaxed">{project.solution}</p>
+        <div className="flex gap-4">
+          <div className="w-1 h-8 bg-brand-accent/40 shrink-0 mt-1 rounded-full"></div>
+          <div>
+            <span className="text-[9px] font-black text-brand-accent uppercase tracking-widest block mb-1">Expert Outcome</span>
+            <p className="text-gray-200 text-xs font-bold leading-relaxed">{project.result}</p>
+          </div>
         </div>
       </div>
 
-      <Link
-        to={project.link}
-        className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white hover:text-brand-accent transition-colors w-max transition-all duration-500 ${
+      <a
+        href={project.link}
+        className={`inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-brand-accent transition-colors w-max transition-all duration-500 ${
           isMobile ? 'opacity-100' : 'opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 delay-200'
         }`}
       >
-        View Case Analysis <ExternalLink className="w-4 h-4" />
-      </Link>
+        View Technical Breakdown <ArrowUpRight className="w-4 h-4" />
+      </a>
     </div>
   </div>
 );

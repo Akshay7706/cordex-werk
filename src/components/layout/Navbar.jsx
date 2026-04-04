@@ -6,6 +6,7 @@ const navLinks = [
   { name: 'Capabilities', href: '#services' },
   { name: 'Process', href: '#process' },
   { name: 'Case Studies', href: '#portfolio' },
+  { name: 'Insights', href: '#codex' },
   { name: 'Pricing', href: '#pricing' },
 ];
 
