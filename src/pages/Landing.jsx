@@ -7,12 +7,13 @@ import Portfolio from '../sections/Portfolio';
 import SocialProof from '../sections/SocialProof';
 import Features from '../sections/Features';
 import TechStack from '../sections/TechStack';
+import Blog from '../sections/Blog';
 import CTA from '../sections/CTA';
 import SEOHead from '../components/SEOHead';
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-brand-dark text-white relative">
+    <div className="min-h-screen bg-brand-dark text-white relative bg-grain">
       <SEOHead title="Home" description="Cordex Werk — a next-generation digital engineering agency crafting high-performance SaaS platforms, AI tools, and immersive e-commerce experiences." />
       <Navbar />
       <main>
@@ -23,6 +24,7 @@ export default function Landing() {
         <SocialProof />
         <Features />
         <TechStack />
+        <Blog />
         <CTA />
       </main>
     </div>
