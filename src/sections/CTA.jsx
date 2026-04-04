@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowRight, Send, CheckCircle, MapPin, Mail, Globe } from 'lucide-react';
+import { Send, CheckCircle, Mail, Globe } from 'lucide-react';
 
 const InstagramIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -36,8 +36,7 @@ function MagneticButton({ children, href }) {
       style={{ x: springX, y: springY }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group inline-flex items-center justify-center w-36 h-36 rounded-full border border-white/20 hover:border-brand-accent bg-transparent hover:bg-brand-accent/10 transition-colors duration-300 cursor-none"
-      data-cursor="START"
+      className="group inline-flex items-center justify-center w-36 h-36 rounded-full border border-white/20 hover:border-brand-accent bg-transparent hover:bg-brand-accent/10 transition-colors duration-300"
       onClick={() => document.getElementById('name')?.focus()}
     >
       <div className="text-center">
@@ -62,7 +61,6 @@ export default function CTA() {
       message: e.target.message.value,
     };
 
-    // Use relative path for production (since they run on the same server) or localhost for dev dev server
     const endpoint = window.location.hostname === 'localhost' 
       ? 'http://localhost:3000/api/contact'
       : '/api/contact';
@@ -97,17 +95,21 @@ export default function CTA() {
     }
   };
 
+  const handleNewsletter = (e) => {
+    e.preventDefault();
+    alert("Transmission Received: You are now subscribed to the Matrix insights.");
+    e.target.reset();
+  };
+
   return (
     <section id="contact" className="py-32 relative z-10 bg-brand-dark overflow-hidden border-t border-white/5">
       
-      {/* Background elements */}
       <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none z-0"></div>
-      <div className="absolute left-[0%] md:left-[30%] top-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[800px] md:h-[600px] bg-brand-secondary/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0"></div>
+      <div className="absolute left-[30%] top-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-brand-accent/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full max-w-[1400px]">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
           
-          {/* Left Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -116,10 +118,10 @@ export default function CTA() {
             className="flex-1 w-full"
           >
             <div className="mb-8">
-               <span className="text-gray-500 text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
+               <span className="text-brand-accent text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
                 Ready to build something elite?
               </span>
-              <h2 className="text-4xl sm:text-5xl md:text-[5rem] lg:text-[6rem] font-heading font-black mb-6 text-white leading-none tracking-tighter">
+              <h2 className="text-5xl md:text-[5rem] lg:text-[6rem] font-heading font-black mb-6 text-white leading-none tracking-tighter">
                 LET'S<br />
                 <span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.4)' }}>
                   BUILD.
@@ -134,7 +136,7 @@ export default function CTA() {
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-4 text-gray-400">
                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
-                   <Mail className="w-4 h-4 text-brand-secondary" />
+                   <Mail className="w-4 h-4 text-brand-accent" />
                  </div>
                  <div>
                    <p className="text-[10px] tracking-widest uppercase font-bold text-gray-500 mb-1">Direct Link</p>
@@ -143,7 +145,7 @@ export default function CTA() {
               </div>
               <div className="flex items-center gap-4 text-gray-400">
                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
-                   <Globe className="w-4 h-4 text-brand-secondary" />
+                   <Globe className="w-4 h-4 text-brand-accent" />
                  </div>
                  <div>
                    <p className="text-[10px] tracking-widest uppercase font-bold text-gray-500 mb-1">Operations</p>
@@ -153,151 +155,125 @@ export default function CTA() {
             </div>
           </motion.div>
 
-          {/* Right Form Component */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex-1 w-full max-w-xl mx-auto lg:mx-0"
+            transition={{ duration: 0.8 }}
+            className="w-full lg:w-1/2 max-w-xl"
           >
-            <div className="relative">
-              {/* Form container blur backdrop */}
-              <div className="absolute inset-0 bg-brand-secondary/5 blur-3xl rounded-[2rem] pointer-events-none"></div>
-              
-              <form onSubmit={handleSubmit} className="relative z-10 glass-panel p-8 md:p-12 overflow-hidden shadow-2xl">
-                
-                <h3 className="font-heading font-bold text-2xl text-white mb-8 tracking-tight">Transmission Form</h3>
-
-                <AnimatePresence>
-                  {status === 'success' && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-                      className="absolute inset-0 bg-[#070b13]/95 backdrop-blur-md z-30 flex flex-col items-center justify-center text-center p-8 border border-brand-accent/30 rounded-[inherit]"
+            <AnimatePresence mode="wait">
+              {status === 'success' ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  className="bg-white/[0.03] border border-brand-accent/30 rounded-3xl p-12 text-center relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-brand-accent/5 blur-3xl rounded-full" />
+                  <div className="relative z-10">
+                    <div className="w-20 h-20 bg-brand-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle className="w-10 h-10 text-brand-accent" />
+                    </div>
+                    <h3 className="text-3xl font-heading font-black text-white mb-4 uppercase tracking-tighter">Transmission Received</h3>
+                    <p className="text-gray-400 font-light mb-8">Data has been securely encrypted and bridged to our operations center. Expect contact within 12 standard hours.</p>
+                    <button 
+                      onClick={() => setStatus('')}
+                      className="text-brand-accent text-xs font-bold tracking-widest uppercase hover:underline"
                     >
-                      <motion.div 
-                        initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', delay: 0.2 }}
-                      >
-                         <CheckCircle className="w-16 h-16 text-brand-accent mb-6" />
-                      </motion.div>
-                      <h3 className="text-2xl font-bold font-heading mb-3 text-white tracking-tight">Transmission Secured</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-                        Your parameters have been logged. The team will analyze your requirements and initiate contact shortly.
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                <div className="space-y-6">
-                  {/* Floating Label Input - Name */}
-                  <div className="relative group">
-                    <input 
-                      required type="text" id="name" name="name" placeholder=" "
-                      className="peer block w-full bg-white/[0.03] border border-white/10 rounded-lg px-5 pb-3 pt-6 text-white text-sm focus:outline-none focus:border-brand-accent focus:bg-white/[0.05] transition-all" 
-                    />
-                    <label htmlFor="name" className="absolute text-[11px] font-bold tracking-widest uppercase text-gray-500 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] left-5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-brand-accent">
-                      Full Name
-                    </label>
+                      Send another transmission
+                    </button>
                   </div>
-
-                  {/* Floating Label Input - Email */}
-                  <div className="relative group">
-                    <input 
-                      required type="email" id="email" name="email" placeholder=" "
-                      className="peer block w-full bg-white/[0.03] border border-white/10 rounded-lg px-5 pb-3 pt-6 text-white text-sm focus:outline-none focus:border-brand-accent focus:bg-white/[0.05] transition-all" 
-                    />
-                    <label htmlFor="email" className="absolute text-[11px] font-bold tracking-widest uppercase text-gray-500 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] left-5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-brand-accent">
-                      Email Address
-                    </label>
-                  </div>
-
-                  {/* Floating Label Textarea - Message */}
-                  <div className="relative group">
-                    <textarea 
-                      required id="message" name="message" rows="5" placeholder=" "
-                      className="peer block w-full bg-white/[0.03] border border-white/10 rounded-lg px-5 pt-6 pb-3 text-white text-sm focus:outline-none focus:border-brand-accent focus:bg-white/[0.05] transition-all resize-none"
-                    ></textarea>
-                     <label htmlFor="message" className="absolute text-[11px] font-bold tracking-widest uppercase text-gray-500 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] left-5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-brand-accent">
-                      Project Details
-                    </label>
-                  </div>
-                  
-                  {/* Submit Button */}
-                  <button 
-                    disabled={status === 'sending'}
-                    type="submit" 
-                    className="w-full mt-4 py-4 rounded-lg font-bold uppercase tracking-widest text-xs bg-brand-primary border border-brand-secondary/40 text-white hover:bg-brand-secondary hover:border-brand-accent hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all duration-300 flex items-center justify-center gap-3 group disabled:opacity-70 disabled:cursor-not-allowed"
-                    data-cursor="SUBMIT"
-                  >
-                    {status === 'sending' ? (
-                      <span className="flex items-center gap-3 animate-pulse">
-                        <div className="w-4 h-4 rounded-full border-2 border-brand-accent border-t-transparent animate-spin" />
-                        Transmitting
-                      </span>
-                    ) : (
-                      <>
-                        Initialize Contact <Send className="w-4 h-4 text-brand-secondary group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-                      </>
-                    )}
-                  </button>
+                </motion.div>
+              ) : (
+                <div className="bg-white/[0.03] backdrop-blur-xl border border-white/5 rounded-3xl p-8 md:p-12">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                       <div className="space-y-2">
+                        <label htmlFor="name" className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Subject Name</label>
+                        <input
+                          id="name"
+                          name="name"
+                          type="text"
+                          required
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-brand-accent transition-colors"
+                          placeholder="Commander"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Return Address</label>
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-brand-accent transition-colors"
+                          placeholder="commander@matrix.io"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Transmission Data</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows={5}
+                        required
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-brand-accent transition-colors resize-none"
+                        placeholder="Detail your requirements for the mission..."
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={status === 'sending'}
+                      className="w-full py-4 bg-white text-black font-bold uppercase tracking-[0.2em] text-xs rounded-xl hover:bg-brand-accent hover:text-black transition-all duration-300 flex items-center justify-center gap-2 group"
+                    >
+                      {status === 'sending' ? (
+                        <>Encrypting...</>
+                      ) : (
+                        <>
+                          Initialize Transmission
+                          <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </>
+                      )}
+                    </button>
+                  </form>
                 </div>
-              </form>
-            </div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
-      </div>
 
-      <div className="relative z-10 px-6 lg:px-16 pt-24 pb-10 border-t border-white/5 mt-32 w-full mx-auto max-w-[1400px]">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-          {/* Brand */}
-          <div className="flex items-center gap-4">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-brand-accent">
-              <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-              <path d="M12 22V12" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-              <path d="M22 7L12 12L2 7" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-              <circle cx="12" cy="12" r="3" fill="currentColor" />
-            </svg>
-            <div>
-              <p className="font-heading font-black text-xl text-white tracking-tighter">
-                CORDEX <span className="font-light text-gray-500 tracking-[0.2em]">WERK</span>
-              </p>
-              <p className="text-gray-600 text-xs mt-1 tracking-widest uppercase">Digital Architecture</p>
+        <div className="mt-40 pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+            <div className="max-w-md">
+                <h4 className="text-white font-bold text-lg mb-2 tracking-tight">Subscribe to the Matrix.</h4>
+                <p className="text-gray-500 text-sm mb-6">Receive irregular updates on digital engineering and elite SaaS architecture.</p>
+                <form onSubmit={handleNewsletter} className="flex gap-2">
+                    <input 
+                        type="email" 
+                        required 
+                        placeholder="you@domain.com"
+                        className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-brand-accent"
+                    />
+                    <button className="px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-widest rounded-lg hover:bg-brand-accent transition-colors">
+                        Join
+                    </button>
+                </form>
             </div>
-          </div>
-          {/* Nav links */}
-          <div className="flex flex-wrap gap-6">
-            {['About', 'Services', 'Portfolio'].map(link => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className="text-xs text-gray-500 hover:text-white uppercase tracking-widest font-bold transition-colors"
-                data-cursor={link}
-              >
-                {link}
-              </a>
-            ))}
-          </div>
-          {/* Socials */}
-          <div className="flex items-center gap-4">
-            <a
-              href="https://www.instagram.com/cordex_werk?igsh=MW8yaDAweTV3a25lNw=="
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:border-pink-500 hover:text-pink-400 transition-colors"
-              data-cursor="SOCIAL"
-            >
-              <InstagramIcon />
-            </a>
-          </div>
-        </div>
-        {/* Copyright */}
-        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-2">
-          <p className="text-[11px] text-gray-600 tracking-widest uppercase">
-            © {new Date().getFullYear()} Cordex Werk. All rights reserved.
-          </p>
-          <p className="text-[11px] text-gray-700 tracking-widest uppercase">
-            Crafted with precision.
-          </p>
+            
+            <div className="flex flex-col md:items-end gap-6 w-full md:w-auto">
+                <div className="flex gap-4">
+                  <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-accent hover:text-brand-accent transition-all">
+                    <InstagramIcon />
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-accent hover:text-brand-accent transition-all">
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  </a>
+                </div>
+                <div className="text-[10px] text-gray-600 font-bold tracking-[0.3em] uppercase">
+                  CORDEX WERK &copy; 2026 // ALL RIGHTS RESERVED
+                </div>
+            </div>
         </div>
       </div>
     </section>

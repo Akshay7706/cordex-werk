@@ -42,7 +42,7 @@ export default function Hero() {
       {/* Interactive Spotlight Orb */}
       <motion.div 
         style={{ transform: spotlightTransform }} 
-        className="absolute top-1/2 left-1/2 w-[300px] h-[300px] md:w-[800px] md:h-[800px] bg-brand-secondary/20 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0 mix-blend-screen"
+        className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-brand-secondary/20 rounded-full blur-[150px] pointer-events-none z-0 mix-blend-screen"
       ></motion.div>
 
       <div className="absolute inset-0 z-10 pointer-events-none flex flex-col justify-between p-6 md:p-12">
@@ -61,8 +61,8 @@ export default function Hero() {
         {/* Bottom Layer */}
         <div className="flex flex-col md:flex-row justify-between items-end w-full pb-8">
           
-          <motion.div custom={1} initial="hidden" animate="visible" variants={textVariants} className="mb-8 md:mb-0 text-left max-w-full overflow-hidden">
-             <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-none tracking-tighter opacity-90 drop-shadow-2xl">
+          <motion.div custom={1} initial="hidden" animate="visible" variants={textVariants} className="mb-8 md:mb-0 text-left">
+             <h1 className="text-4xl md:text-7xl font-heading font-black text-white leading-none tracking-tighter opacity-90 drop-shadow-2xl">
                <ScrambleText text="CORDEX" />
              </h1>
              <p className="text-gray-400 text-[10px] uppercase tracking-[0.3em] font-bold mt-3">

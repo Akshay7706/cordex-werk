@@ -45,17 +45,13 @@ const projects = [
 
 export default function Portfolio() {
   const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({ 
-    target: targetRef,
-    offset: ["start start", "end end"]
-  });
+  const { scrollYProgress } = useScroll({ target: targetRef });
 
   // 5 cards × 440px wide + gaps, shift the track from 0 to -(total - 100vw)
-  // Recalibrated: -68% ensures the last card is fully framed at the end of the scroll
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-68%']);
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-72%']);
 
   return (
-    <section id="portfolio" ref={targetRef} className="relative z-10 bg-brand-dark h-[200vh] md:h-[300vh]">
+    <section id="portfolio" ref={targetRef} className="relative z-10 bg-brand-dark h-[400vh]">
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
 
         {/* Background decorations */}

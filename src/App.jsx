@@ -12,7 +12,7 @@ import AgencyAdmin from './pages/AgencyAdmin';
 import GlobalLoader from './components/GlobalLoader';
 import PageTransition from './components/PageTransition';
 import ChromaticAberration from './components/shared/ChromaticAberration';
-// Removed MagneticCursor for performance reasons
+import MagneticCursor from './components/shared/MagneticCursor';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -44,7 +44,7 @@ function App() {
   return (
     <>
       <ChromaticAberration />
-      {/* Custom cursor removed for performance */}
+      <MagneticCursor />
       {!loaderDone && <GlobalLoader onDone={() => setLoaderDone(true)} />}
       <BrowserRouter>
         <AnimatedRoutes />
