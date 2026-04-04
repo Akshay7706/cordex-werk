@@ -90,6 +90,7 @@ export default function CTA() {
       }
     } catch (error) {
       setStatus('error');
+      console.error(error);
       alert("Failed to reach server. Error: " + error.message);
     }
   };

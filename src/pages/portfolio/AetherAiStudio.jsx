@@ -43,6 +43,7 @@ export default function AetherAiStudio() {
       // Insert new successfully generated image at the top of the grid
       setImages(prev => [imageUrl, ...prev]);
     } catch (error) {
+      console.error("AI Generation failed:", error);
       alert("AI Image Synthesis failed. Please try a different prompt.");
     } finally {
       setIsGenerating(false);
