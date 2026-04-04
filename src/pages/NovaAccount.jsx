@@ -40,7 +40,7 @@ export default function NovaAccount() {
       const data = await res.json();
       setOrders(data);
     } catch (err) {
-      console.error('Failed to fetch orders', err);
+      // Error handled silently
     } finally {
       setLoading(false);
     }

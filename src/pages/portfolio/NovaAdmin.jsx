@@ -37,7 +37,7 @@ export default function NovaAdmin() {
         setProducts(data);
       }
     } catch (err) {
-      console.error("Failed to fetch products:", err);
+      // Error handled silently for production
     }
   };
 
@@ -79,7 +79,7 @@ export default function NovaAdmin() {
         fetchProducts();
       }
     } catch (err) {
-      console.error("Failed to add product:", err);
+      // Error handled silently for production
     }
   };
 

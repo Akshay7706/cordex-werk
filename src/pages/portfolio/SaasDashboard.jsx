@@ -38,7 +38,7 @@ export default function SaasDashboard() {
           setRevenueData(formatted);
         }
       } catch (error) {
-        console.error("Failed to fetch metrics from backend", error);
+        // Error handled silently
       } finally {
         setIsLoading(false);
       }

@@ -24,7 +24,7 @@ export default function NovaStore() {
     fetch('http://localhost:3000/api/products')
       .then(res => res.json())
       .then(data => setProducts(data))
-      .catch(err => console.error("Error fetching products:", err));
+      .catch(err => { /* Silent error for production */ });
   }, []);
 
   const addToCart = (product) => {
@@ -73,7 +73,7 @@ export default function NovaStore() {
         }, 3000);
       }
     } catch (error) {
-      console.error("Checkout failed", error);
+      // Error handled silently
     } finally {
       setIsCheckingOut(false);
     }

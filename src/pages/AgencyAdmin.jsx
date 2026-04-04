@@ -30,7 +30,7 @@ export default function AgencyAdmin() {
         setMessages(data);
       }
     } catch (err) {
-      console.error("Failed to fetch messages:", err);
+      // Silent error for production
     }
   };
 
@@ -67,7 +67,7 @@ export default function AgencyAdmin() {
          }
       }
     } catch (err) {
-      console.error("Failed to delete", err);
+      // Handled silently
     }
   };
 

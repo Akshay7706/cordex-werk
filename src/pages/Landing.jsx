@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/layout/Navbar';
 import Hero from '../sections/Hero';
+import FeaturedSaaS from '../sections/FeaturedSaaS';
 import WhyChooseMe from '../sections/WhyChooseMe';
 import Services from '../sections/Services';
 import Portfolio from '../sections/Portfolio';
@@ -20,6 +21,7 @@ export default function Landing() {
       <Navbar />
       <main>
         <Hero />
+        <FeaturedSaaS />
         <WhyChooseMe />
         <Services />
         <Portfolio />
