@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
 const partners = [
-  { name: 'Nvidia', logo: 'https://www.vectorlogo.zone/logos/nvidia/nvidia-ar21.svg' },
-  { name: 'OpenAI', logo: 'https://www.vectorlogo.zone/logos/openai/openai-ar21.svg' },
-  { name: 'Vercel', logo: 'https://www.vectorlogo.zone/logos/vercel/vercel-ar21.svg' },
-  { name: 'Supabase', logo: 'https://www.vectorlogo.zone/logos/supabase/supabase-ar21.svg' },
-  { name: 'Stripe', logo: 'https://www.vectorlogo.zone/logos/stripe/stripe-ar21.svg' },
-  { name: 'DigitalOcean', logo: 'https://www.vectorlogo.zone/logos/digitalocean/digitalocean-ar21.svg' },
+  { name: 'Nvidia', logo: 'https://cdn.simpleicons.org/nvidia/white' },
+  { name: 'OpenAI', logo: 'https://cdn.simpleicons.org/openai/white' },
+  { name: 'Vercel', logo: 'https://cdn.simpleicons.org/vercel/white' },
+  { name: 'Supabase', logo: 'https://cdn.simpleicons.org/supabase/white' },
+  { name: 'Stripe', logo: 'https://cdn.simpleicons.org/stripe/white' },
+  { name: 'DigitalOcean', logo: 'https://cdn.simpleicons.org/digitalocean/white' },
 ];
 
 const testimonials = [
@@ -47,7 +47,7 @@ export default function SocialProof() {
             <div className="flex animate-marquee hover:[animation-play-state:paused] whitespace-nowrap">
               {marqueeLogos.map((brand, idx) => (
                 <div key={idx} className="f-center mx-8 md:mx-12 opacity-40 hover:opacity-100 transition-all duration-300">
-                  <img src={brand.logo} alt={brand.name} className="h-5 md:h-8 object-contain brightness-0 invert" />
+                  <img src={brand.logo} alt={brand.name} className="h-4 md:h-6 object-contain" />
                 </div>
               ))}
             </div>

@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
 
 const stack = [
-  { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-  { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-  { name: 'Tailwind CSS', icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg' },
-  { name: 'Framer Motion', icon: 'https://pagepro.co/blog/wp-content/uploads/2020/03/framer-motion.png' },
-  { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-  { name: 'AWS', icon: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' }
+  { name: 'React', icon: 'https://cdn.simpleicons.org/react/61DAFB' },
+  { name: 'Next.js', icon: 'https://cdn.simpleicons.org/nextdotjs/white' },
+  { name: 'Node.js', icon: 'https://cdn.simpleicons.org/nodedotjs/339933' },
+  { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
+  { name: 'Tailwind CSS', icon: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
+  { name: 'Framer', icon: 'https://cdn.simpleicons.org/framer/black/white' },
+  { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker/2496ED' },
+  { name: 'AWS', icon: 'https://cdn.simpleicons.org/amazonaws/FF9900' }
 ];
 
 export default function TechStack() {
