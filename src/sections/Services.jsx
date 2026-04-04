@@ -46,73 +46,78 @@ function SidePanel({ service, onClose }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
-      className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex justify-end cursor-pointer"
+      className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex justify-end transition-all duration-500"
     >
       <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ x: '100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+        initial={{ x: '100%', opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: '100%', opacity: 0 }}
+        transition={{ type: 'spring', damping: 30, stiffness: 300 }}
         onClick={(e) => e.stopPropagation()}
-        className="w-full md:max-w-xl bg-brand-dark border-l border-white/10 h-full overflow-y-auto p-6 md:p-12 relative cursor-default"
+        className="w-full md:w-[500px] lg:w-[600px] bg-[#050B14] border-l border-white/10 h-full overflow-y-auto relative shadow-[-20px_0_60px_rgba(0,0,0,0.8)] z-[110]"
       >
-        <button 
-          onClick={onClose}
-          className="absolute top-6 right-6 md:top-8 md:right-8 text-gray-500 hover:text-white transition-colors"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
+        {/* Header Decor */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-accent to-transparent opacity-50 z-[120]" />
 
-        <span className="text-brand-accent text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-4 block">{service.tag}</span>
-        <h2 className="text-3xl md:text-5xl font-heading font-black text-white leading-none mb-8">{service.title}</h2>
-        
-        <div className="aspect-video rounded-xl overflow-hidden mb-10 border border-white/5">
-           <img src={service.details.image} alt={service.title} className="w-full h-full object-cover" />
-        </div>
+        <div className="p-8 md:p-12 relative z-[130]">
+          <button 
+            onClick={onClose}
+            className="absolute top-8 right-8 text-gray-400 hover:text-white transition-colors group flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest z-[140] bg-black/40 px-4 py-2 rounded-full border border-white/5 backdrop-blur-md"
+          >
+            Close <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
 
-        <section className="space-y-10">
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 border-b border-white/5 pb-2">Technologies Used</h4>
-            <div className="flex flex-wrap gap-2">
-              {service.details.technologies.map(t => (
-                <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-brand-accent font-medium">{t}</span>
-              ))}
+          <span className="text-brand-accent text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 block">{service.tag}</span>
+          <h2 className="text-3xl md:text-5xl font-heading font-black text-white leading-none mb-10">{service.title}</h2>
+          
+          <div className="aspect-video rounded-2xl overflow-hidden mb-12 border border-white/10 shadow-2xl">
+             <img src={service.details.image} alt={service.title} className="w-full h-full object-cover" />
+          </div>
+
+          <section className="space-y-12">
+            <div>
+              <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 mb-6 border-b border-white/5 pb-3">Strategic Stack</h4>
+              <div className="flex flex-wrap gap-2">
+                {service.details.technologies.map(t => (
+                  <span key={t} className="px-4 py-1.5 bg-white/[0.03] border border-white/10 rounded-full text-[10px] text-white font-medium hover:border-brand-accent/40 transition-colors">{t}</span>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 border-b border-white/5 pb-2">The Process</h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {service.details.process.map(p => (
-                <li key={p} className="flex items-center gap-2 text-sm text-gray-300">
-                  <div className="w-1 h-1 bg-brand-accent rounded-full" /> {p}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 border-b border-white/5 pb-2">Key Deliverables</h4>
-            <div className="space-y-3">
-              {service.details.deliverables.map(d => (
-                <div key={d} className="p-4 bg-white/[0.02] border border-white/5 rounded-lg text-sm text-gray-400 hover:border-brand-accent/20 transition-colors">
-                  {d}
-                </div>
-              ))}
+            <div>
+              <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 mb-6 border-b border-white/5 pb-3">The Architecture</h4>
+              <ul className="space-y-4">
+                {service.details.process.map(p => (
+                  <li key={p} className="flex items-center gap-4 text-sm text-gray-400 group">
+                    <div className="w-1.5 h-1.5 bg-brand-accent rounded-full group-hover:scale-150 transition-transform" /> {p}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-        </section>
 
-        <div className="mt-16 pt-8 border-t border-white/5">
-           <button 
-             onClick={() => {
-                onClose();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-             }}
-             className="w-full py-4 bg-brand-primary text-white font-bold uppercase tracking-widest text-xs rounded-lg hover:bg-brand-secondary transition-all"
-           >
-             Start Your Journey
-           </button>
+            <div>
+              <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 mb-6 border-b border-white/5 pb-3">Elite Deliverables</h4>
+              <div className="grid grid-cols-1 gap-3">
+                {service.details.deliverables.map(d => (
+                  <div key={d} className="p-5 bg-white/[0.02] border border-white/5 rounded-xl text-sm text-gray-300 hover:border-brand-accent/20 transition-all hover:translate-x-1">
+                    {d}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <div className="mt-20 pt-10 border-t border-white/5">
+             <button 
+               onClick={() => {
+                  onClose();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+               }}
+               className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.3em] text-[10px] rounded-xl hover:bg-brand-accent transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+             >
+               Initialize Partnership
+             </button>
+          </div>
         </div>
       </motion.div>
     </motion.div>
