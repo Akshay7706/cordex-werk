@@ -55,14 +55,6 @@ const testimonials = [
   }
 ];
 
-const partners = [
-  { name: 'Nvidia' },
-  { name: 'OpenAI' },
-  { name: 'Vercel' },
-  { name: 'Supabase' },
-  { name: 'Stripe' },
-  { name: 'DigitalOcean' },
-];
 
 export default function SocialProof() {
   const marqueeLogos = [...partners, ...partners, ...partners];
