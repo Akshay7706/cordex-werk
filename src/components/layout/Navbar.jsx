@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Portfolio', href: '#portfolio' },
-  { name: 'Features', href: '#features' },
+  { name: 'Capabilities', href: '#services' },
+  { name: 'Process', href: '#process' },
+  { name: 'Case Studies', href: '#portfolio' },
+  { name: 'Pricing', href: '#pricing' },
 ];
 
 export default function Navbar() {
@@ -108,9 +108,9 @@ export default function Navbar() {
           <div className="hidden md:flex">
             <a
               href="#contact"
-              className="px-5 py-2 rounded text-xs font-bold uppercase tracking-widest border border-white/15 text-gray-300 hover:border-brand-accent hover:text-brand-accent hover:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300"
+              className="px-6 py-2.5 rounded-full border border-brand-accent/30 bg-brand-accent/5 text-brand-accent text-xs font-bold uppercase tracking-widest hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(0,229,255,0.1)]"
             >
-              Start Project →
+              Book a Free Call
             </a>
           </div>
 
@@ -165,9 +165,9 @@ export default function Navbar() {
                     open: { opacity: 1, scale: 1 },
                     closed: { opacity: 0, scale: 0.95 }
                   }}
-                  className="mt-4 text-center text-xs font-bold uppercase tracking-[0.3em] px-6 py-4 border border-brand-accent/50 text-brand-accent rounded-full hover:bg-brand-accent/10 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.15)]"
+                  className="mt-4 text-center text-xs font-bold uppercase tracking-[0.3em] px-6 py-4 bg-white text-black rounded-full hover:bg-brand-accent transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                 >
-                  Initiate Project
+                  Book a Free Call
                 </motion.a>
               </motion.div>
             </motion.div>

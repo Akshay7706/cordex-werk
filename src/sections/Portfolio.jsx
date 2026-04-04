@@ -14,38 +14,33 @@ const project5 = 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?a
 
 const projects = [
   {
-    title: 'SaaS Analytics Dashboard',
-    category: 'Web App',
-    description: 'A comprehensive admin panel featuring real-time data visualization, user management, and seamless performance.',
+    title: 'Aura Fintech',
+    category: 'SaaS Platform',
+    metrics: '+142% Conversion Rate',
+    description: 'High-end banking interface re-engineered for trust and speed. We focused on reducing friction in the KYC flow.',
+    problem: 'Low onboarding completion rates due to a complex 12-step verification process.',
+    solution: 'Simplified 3-step biometric-first verification with real-time feedback loops.',
     img: project1,
-    link: '/portfolio/saas-dashboard'
+    link: '#'
   },
   {
-    title: 'Aether AI Studio',
-    category: 'AI Tool Website',
+    title: 'Nexus AI Studio',
+    category: 'AI Startup',
+    metrics: '-40% Churn Rate',
     description: 'A dark-themed platform empowering creators to generate visuals using state-of-the-art machine learning models.',
+    problem: 'Users were dropping off after the first generation due to slow processing speeds.',
+    solution: 'Implemented a custom GPU-aware queuing system and a cinematic loading state.',
     img: project2,
-    link: '/portfolio/aether-ai'
+    link: '#'
   },
   {
-    title: 'FinTech Startup Landing',
-    category: 'Website Structure',
-    description: 'Conversion-driven landing page for a modern banking solution with integrated pricing modules.',
+    title: 'Skyward Enterprise',
+    category: 'Analytics Dashboard',
+    metrics: '100% Mobile Optimized',
+    description: 'Enterprise-grade architecture for businesses demanding market-dominating elite tools.',
+    problem: 'Critical data insights were inaccessible to field agents on mobile devices.',
+    solution: 'Hybrid responsive dashboard with GLSL-powered data visualizations.',
     img: project3,
-    link: '/portfolio/fintech-landing'
-  },
-  {
-    title: 'NOVA Hype E-Commerce',
-    category: 'E-Commerce Platform',
-    description: 'High-end monochrome retail experience featuring interactive sliding cart mechanics and seamless checkout mockups.',
-    img: project4,
-    link: '/portfolio/nova-store'
-  },
-  {
-    title: 'Celestial 3D Engine',
-    category: 'Interactive Experience',
-    description: 'A cinematic, physics-based 3D environment powered by React Three Fiber and custom GLSL nebula shaders.',
-    img: project5,
     link: '#'
   }
 ];
@@ -61,25 +56,43 @@ const ProjectCard = ({ project, isMobile }) => (
       alt={project.title}
       className={`absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-[2s] ease-out z-0`}
     />
-    <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-8">
-      <span className="text-[10px] font-bold uppercase tracking-widest text-black bg-brand-accent px-3 py-1 rounded-full w-max mb-3">
-        {project.category}
-      </span>
-      <h3 className="text-2xl md:text-3xl font-heading font-black text-white mb-3 group-hover:text-brand-accent transition-colors duration-500 leading-tight">
+    <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-10">
+      <div className="flex flex-wrap gap-2 mb-4">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-black bg-brand-accent px-3 py-1 rounded-full w-max">
+          {project.category}
+        </span>
+        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-accent bg-white/5 border border-brand-accent/30 backdrop-blur-md px-3 py-1 rounded-full w-max animate-pulse">
+          {project.metrics}
+        </span>
+      </div>
+      
+      <h3 className="text-2xl md:text-4xl font-heading font-black text-white mb-2 group-hover:text-brand-accent transition-colors duration-500 leading-tight">
         {project.title}
       </h3>
-      <p className={`text-gray-400 text-xs md:text-sm mb-5 font-light leading-relaxed max-w-sm transition-all duration-500 ${
-        isMobile ? 'opacity-100' : 'opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0'
-      }`}>
+      <p className="text-gray-400 text-xs md:text-sm font-light mb-6 line-clamp-2 max-w-md">
         {project.description}
       </p>
+
+      <div className={`space-y-3 mb-8 transition-all duration-500 delay-100 ${
+        isMobile ? 'opacity-100' : 'opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0'
+      }`}>
+        <div className="flex gap-3">
+          <span className="text-[10px] font-black text-brand-accent uppercase shrink-0 mt-1">Problem</span>
+          <p className="text-gray-400 text-[11px] leading-relaxed">{project.problem}</p>
+        </div>
+        <div className="flex gap-3">
+          <span className="text-[10px] font-black text-white uppercase shrink-0 mt-1">Solution</span>
+          <p className="text-gray-300 text-[11px] leading-relaxed">{project.solution}</p>
+        </div>
+      </div>
+
       <Link
         to={project.link}
         className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white hover:text-brand-accent transition-colors w-max transition-all duration-500 ${
-          isMobile ? 'opacity-100' : 'opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 delay-100'
+          isMobile ? 'opacity-100' : 'opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 delay-200'
         }`}
       >
-        Explore Project <ExternalLink className="w-4 h-4" />
+        View Case Analysis <ExternalLink className="w-4 h-4" />
       </Link>
     </div>
   </div>
@@ -110,8 +123,8 @@ export default function Portfolio() {
             Selected Works
           </span>
           <h2 className="text-4xl md:text-7xl font-heading font-black text-white tracking-tighter leading-none">
-            <ScrambleText text="DIGITAL" />{' '}
-            <ScrambleText text="ARCHITECTURE." />
+            <ScrambleText text="CASE" />{' '}
+            <ScrambleText text="ANALYSIS." />
           </h2>
         </div>
 

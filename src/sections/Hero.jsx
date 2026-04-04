@@ -69,25 +69,32 @@ export default function Hero() {
         </div>
 
         {/* Bottom Layer */}
-        <div className="flex flex-col md:flex-row justify-between items-end w-full pb-10 md:pb-8">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full pb-10 md:pb-8 gap-8 px-4">
           
-          <motion.div custom={1} initial="hidden" animate="visible" variants={textVariants} className="mb-10 md:mb-0 text-left">
-             <h1 className="text-4xl sm:text-5xl md:text-7xl font-heading font-black text-white leading-none tracking-tighter opacity-90 drop-shadow-2xl">
-               <ScrambleText text="CORDEX" />
+          <motion.div custom={1} initial="hidden" animate="visible" variants={textVariants} className="flex-1 text-center md:text-left max-w-2xl">
+             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.1] tracking-tighter mb-6">
+               Build Websites That Don't Just <span className="text-brand-accent">Look Good</span> — They Convert.
              </h1>
-             <p className="text-gray-400 text-[10px] uppercase tracking-[0.3em] font-bold mt-4">
-               <ScrambleText text="DIGITAL ARCHITECTURE" />
+             <p className="text-gray-400 text-sm md:text-lg font-light leading-relaxed mb-8 max-w-xl">
+               Helping startups and SaaS businesses design high-performance digital experiences that increase conversions and scale faster.
              </p>
+             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+               <a href="#contact" className="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest text-xs rounded-full hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                 Get Your Website
+               </a>
+               <a href="#contact" className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold uppercase tracking-widest text-xs rounded-full hover:bg-brand-accent/10 hover:border-brand-accent/50 backdrop-blur-md transition-all duration-300">
+                 Book a Free Call
+               </a>
+             </div>
           </motion.div>
 
-          <motion.div custom={2} initial="hidden" animate="visible" variants={textVariants} className="pointer-events-auto flex items-center gap-6">
-            <a href="#portfolio" className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 hover:text-white transition-colors">
-              Explore Projects
-            </a>
-            <div className="w-10 md:w-12 h-[1px] bg-white/20"></div>
-            <a href="#contact" className="group flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/20 hover:border-brand-accent bg-transparent hover:bg-brand-accent/10 transition-all duration-300">
-               <svg className="w-4 h-4 text-white group-hover:text-brand-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
+          <motion.div custom={2} initial="hidden" animate="visible" variants={textVariants} className="hidden lg:flex pointer-events-none items-center gap-12 relative">
+            <div className="absolute -inset-20 bg-brand-secondary/10 blur-[100px] rounded-full"></div>
+            <div className="flex flex-col items-end gap-2 text-right">
+              <span className="text-brand-accent text-[10px] font-bold tracking-[0.3em] uppercase">Specialization</span>
+              <span className="text-white text-3xl font-heading font-black tracking-tighter leading-none">SaaS &<br />Startups</span>
+            </div>
+            <div className="w-16 h-[1px] bg-white/20"></div>
           </motion.div>
         </div>
       </div>

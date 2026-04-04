@@ -3,35 +3,35 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const services = [
   {
-    title: 'WEB EXPERIENCE',
-    description: 'High-performance, beautifully engineered websites built for speed and premium user experiences.',
+    title: 'SaaS DEVELOPMENT',
+    description: 'High-performance, scalable SaaS platforms built with Next.js and Node. We focus on unit economics and user retention.',
     tag: '01',
     details: {
-      technologies: ['React', 'Next.js', 'Framer Motion', 'Tailwind', 'Three.js'],
-      process: ['Conceptual Design', '3D Prototyping', 'Component Development', 'Performance Tuning'],
-      deliverables: ['Custom 3D Landing Pages', 'Interactive Portfolios', 'High-speed Headless Frontends'],
-      image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800'
-    }
-  },
-  {
-    title: 'SaaS PLATFORMS',
-    description: 'Scalable SaaS applications and mobile experiences with modern tech stacks and flawless logic.',
-    tag: '02',
-    details: {
-      technologies: ['Node.js', 'Express', 'Supabase', 'PostgreSQL', 'Redux', 'Zustand'],
-      process: ['System Architecture', 'Database Design', 'API Orchestration', 'User Flow Mapping'],
-      deliverables: ['Custom Dashboards', 'Auth & CRM Portals', 'Cloud-native Enterprise Apps'],
+      technologies: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Supabase'],
+      process: ['Architecture Design', 'Database Scaling', 'API Orchestration', 'Security Audits'],
+      deliverables: ['Custom SaaS Dashboards', 'Multi-tenant Systems', 'Cloud-native Deployments'],
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800'
     }
   },
   {
-    title: 'SYSTEM ARCHITECTURE',
-    description: 'Robust server architecture, AI-driven solutions, and enterprise-grade backend infrastructure.',
+    title: 'LANDING PAGES',
+    description: 'Conversion-optimized landing pages designed to turn cold traffic into high-paying customers for your startup.',
+    tag: '02',
+    details: {
+      technologies: ['Tailwind CSS', 'Framer Motion', 'Three.js', 'SEO Matrix'],
+      process: ['Psychology Analysis', 'A/B Test Design', 'Performance Tuning', 'Asset Optimization'],
+      deliverables: ['High-converting Funnels', 'Interactive Storytelling Pages', 'Sales-driven UI'],
+      image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800'
+    }
+  },
+  {
+    title: 'UI/UX STRATEGY',
+    description: 'Elite digital design that balances futuristic aesthetics with intuitive logic to reduce churn and improve UX.',
     tag: '03',
     details: {
-      technologies: ['Python', 'PyTorch', 'AWS', 'Docker', 'OpenAI API', 'Vectors/Pinecone'],
-      process: ['Model Selection', 'Fine-tuning', 'Vector Search Logic', 'Infrastructure as Code'],
-      deliverables: ['Custom AI Agents', 'LLM Integration', 'Scalable Cloud Infrastructure'],
+      technologies: ['Figma', 'Prototyping', 'User Mapping', 'Brand Systems'],
+      process: ['Wireframe Mapping', 'Visual Identity', 'Usability Testing', 'Design System Dev'],
+      deliverables: ['Custom Design Systems', 'High-fidelity Prototypes', 'Full Brand Guidelines'],
       image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800'
     }
   }

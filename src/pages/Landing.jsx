@@ -1,10 +1,12 @@
 import React from 'react';
 import Navbar from '../components/layout/Navbar';
 import Hero from '../sections/Hero';
-import About from '../sections/About';
+import WhyChooseMe from '../sections/WhyChooseMe';
 import Services from '../sections/Services';
 import Portfolio from '../sections/Portfolio';
-import Features from '../sections/Features';
+import Process from '../sections/Process';
+import Testimonials from '../sections/Testimonials';
+import Pricing from '../sections/Pricing';
 import TechStack from '../sections/TechStack';
 import CTA from '../sections/CTA';
 import SEOHead from '../components/SEOHead';
@@ -12,14 +14,16 @@ import SEOHead from '../components/SEOHead';
 export default function Landing() {
   return (
     <div className="min-h-screen bg-brand-dark text-white relative">
-      <SEOHead title="Home" description="Cordex Werk — a next-generation digital engineering agency crafting high-performance SaaS platforms, AI tools, and immersive e-commerce experiences." />
+      <SEOHead title="Home | Elite SaaS Development" description="Cordex Werk — We build high-performance, conversion-optimized SaaS platforms and startup landing pages that scale faster." />
       <Navbar />
       <main>
         <Hero />
-        <About />
+        <WhyChooseMe />
         <Services />
         <Portfolio />
-        <Features />
+        <Process />
+        <Testimonials />
+        <Pricing />
         <TechStack />
         <CTA />
       </main>
