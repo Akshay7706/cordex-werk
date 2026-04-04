@@ -4,7 +4,6 @@ import Hero from '../sections/Hero';
 import About from '../sections/About';
 import Services from '../sections/Services';
 import Portfolio from '../sections/Portfolio';
-import SocialProof from '../sections/SocialProof';
 import Features from '../sections/Features';
 import TechStack from '../sections/TechStack';
 import CTA from '../sections/CTA';
@@ -20,7 +19,6 @@ export default function Landing() {
         <About />
         <Services />
         <Portfolio />
-        <SocialProof />
         <Features />
         <TechStack />
         <CTA />
