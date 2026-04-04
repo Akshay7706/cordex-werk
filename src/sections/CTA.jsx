@@ -79,12 +79,13 @@ export default function CTA() {
         e.target.reset();
         setTimeout(() => setStatus(''), 5000);
       } else {
-        let errorMsg = "Server Error";
+        const text = await response.text();
+        let errorMsg = text || "Server Error";
         try {
-           const errorData = await response.json();
+           const errorData = JSON.parse(text);
            errorMsg = errorData.error || errorMsg;
         } catch(e) {
-           errorMsg = await response.text();
+           // Fallback to text already handled
         }
         setStatus('error');
         alert("Transmission Failed: " + errorMsg);
