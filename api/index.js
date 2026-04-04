@@ -50,10 +50,7 @@ app.post('/api/contact', async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 
-  // Simulate a slight delay to show off a realistic loading state on the front-end
-  setTimeout(() => {
-    res.status(201).json({ success: true, id: data[0].id });
-  }, 1200);
+  res.status(201).json({ success: true, id: data[0].id });
 });
 
 // 2. METRICS GET ENDPOINT
