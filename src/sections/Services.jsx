@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const services = [
@@ -122,6 +122,14 @@ function SidePanel({ service, onClose }) {
 export default function Services() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeService, setActiveService] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const previewImages = services.map(s => s.details.image);
 
