@@ -65,14 +65,12 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-heading font-black text-white leading-[1.05] tracking-tighter mb-8">
-              I Help Startups Build <br className="hidden md:block" /> 
-              <span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.4)' }}>High-Converting</span> Websites <br className="hidden md:block" />
-              That <span className="text-brand-accent underline decoration-brand-accent/30 underline-offset-8">Drive Growth.</span>
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-black text-white leading-[1] tracking-tighter mb-10">
+              CORDEX <span className="text-gray-500 font-light">WERK</span><span className="text-brand-accent">.</span>
             </h1>
             
-            <p className="text-gray-400 text-base md:text-xl font-light leading-relaxed mb-10 max-w-2xl mx-auto">
-              Specialized engineering for ambitious SaaS brands. We blend psychological conversion triggers with elite-level React performance to turn visitors into customers.
+            <p className="text-gray-400 text-lg md:text-2xl font-light leading-relaxed mb-12 max-w-3xl mx-auto uppercase tracking-[0.2em] opacity-80">
+              High-Performance Engineering <span className="mx-4 text-white/20">|</span> SaaS & Startup Strategy
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center">

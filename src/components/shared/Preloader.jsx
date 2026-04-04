@@ -66,8 +66,8 @@ export default function Preloader() {
                 ></motion.div>
               </div>
 
-              <div className="flex justify-between w-full mt-2">
-                 <span className="text-[8px] text-gray-500 uppercase tracking-widest">Cordex_System_v2.0</span>
+              <div className="flex justify-between w-full mt-2 font-mono">
+                 <span className="text-[10px] text-brand-accent uppercase tracking-widest font-bold">CORDEX WERK</span>
                  <span className="text-[8px] text-gray-500 uppercase tracking-widest">Aesthetic Override</span>
               </div>
             </motion.div>

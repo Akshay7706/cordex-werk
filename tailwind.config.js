@@ -18,6 +18,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         heading: ['Space Grotesk', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       backgroundImage: {
         'space-gradient': 'linear-gradient(to bottom, #050B14, #0B1C2C)',

@@ -65,9 +65,9 @@ export default function GlobalLoader({ onDone }) {
                 />
               </div>
 
-              <div className="flex justify-between mt-4">
-                <span className="text-[8px] text-gray-600 uppercase tracking-widest">Cordex_Sys_v2</span>
-                <span className="text-[8px] text-gray-600 uppercase tracking-widest animate-pulse">Running checks</span>
+              <div className="flex justify-between mt-4 font-mono">
+                <span className="text-[10px] text-brand-accent uppercase tracking-widest font-bold">CORDEX WERK</span>
+                <span className="text-[8px] text-gray-500 uppercase tracking-widest animate-pulse">Running checks</span>
               </div>
             </motion.div>
           </div>
