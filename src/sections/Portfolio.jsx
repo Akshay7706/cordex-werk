@@ -51,7 +51,7 @@ export default function Portfolio() {
   const x = useTransform(scrollYProgress, [0, 1], ['0%', '-72%']);
 
   return (
-    <section id="portfolio" ref={targetRef} className="relative z-10 bg-brand-dark h-[400vh]">
+    <section id="portfolio" ref={targetRef} className="relative z-10 bg-brand-dark h-[250vh] md:h-[400vh]">
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
 
         {/* Background decorations */}
