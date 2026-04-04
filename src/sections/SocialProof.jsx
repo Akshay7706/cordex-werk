@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
 const partners = [
-  { name: 'Nvidia', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg' },
-  { name: 'OpenAI', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg' },
-  { name: 'Vercel', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Vercel_logo_black.svg' },
-  { name: 'Supabase', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a8/Supabase_logo.svg' },
-  { name: 'Stripe', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg' },
-  { name: 'DigitalOcean', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/ff/DigitalOcean_logo.svg' },
+  { name: 'Nvidia', logo: 'https://www.vectorlogo.zone/logos/nvidia/nvidia-ar21.svg' },
+  { name: 'OpenAI', logo: 'https://www.vectorlogo.zone/logos/openai/openai-ar21.svg' },
+  { name: 'Vercel', logo: 'https://www.vectorlogo.zone/logos/vercel/vercel-ar21.svg' },
+  { name: 'Supabase', logo: 'https://www.vectorlogo.zone/logos/supabase/supabase-ar21.svg' },
+  { name: 'Stripe', logo: 'https://www.vectorlogo.zone/logos/stripe/stripe-ar21.svg' },
+  { name: 'DigitalOcean', logo: 'https://www.vectorlogo.zone/logos/digitalocean/digitalocean-ar21.svg' },
 ];
 
 const testimonials = [
