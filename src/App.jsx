@@ -9,7 +9,6 @@ import NovaStore from './pages/portfolio/NovaStore';
 import NovaAdmin from './pages/portfolio/NovaAdmin';
 import NovaAccount from './pages/NovaAccount';
 import AgencyAdmin from './pages/AgencyAdmin';
-import CaseStudy from './pages/CaseStudy';
 import GlobalLoader from './components/GlobalLoader';
 import PageTransition from './components/PageTransition';
 import ChromaticAberration from './components/shared/ChromaticAberration';
@@ -34,7 +33,6 @@ function AnimatedRoutes() {
         <Route path="/portfolio/nova-store" element={<PageTransition><NovaStore /></PageTransition>} />
         <Route path="/portfolio/nova-store/admin" element={<PageTransition><NovaAdmin /></PageTransition>} />
         <Route path="/portfolio/nova-store/account" element={<PageTransition><NovaAccount /></PageTransition>} />
-        <Route path="/case-study/:id" element={<PageTransition><CaseStudy /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   );
