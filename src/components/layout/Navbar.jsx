@@ -130,27 +130,46 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden bg-black/95 backdrop-blur-xl border-t border-white/[0.06]"
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="md:hidden overflow-hidden bg-black/80 backdrop-blur-3xl border-t border-white/[0.06] shadow-2xl"
             >
-              <div className="flex flex-col px-6 py-6 gap-5">
+              <motion.div 
+                initial="closed"
+                animate="open"
+                variants={{
+                  open: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } },
+                  closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
+                }}
+                className="flex flex-col px-8 py-10 gap-6"
+              >
                 {navLinks.map(link => (
-                  <a
+                  <motion.a
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors"
+                    variants={{
+                      open: { opacity: 1, x: 0 },
+                      closed: { opacity: 0, x: -20 }
+                    }}
+                    transition={{ duration: 0.4 }}
+                    className="text-lg font-heading font-bold uppercase tracking-[0.2em] text-gray-400 hover:text-brand-accent transition-colors py-2 border-b border-white/5 last:border-0"
                   >
                     {link.name}
-                  </a>
+                  </motion.a>
                 ))}
-                <a
+                
+                <motion.a
                   href="#contact"
                   onClick={() => setMobileOpen(false)}
-                  className="mt-2 text-center text-xs font-bold uppercase tracking-widest px-5 py-3 border border-brand-accent/40 text-brand-accent rounded hover:bg-brand-accent/10 transition-colors"
+                  variants={{
+                    open: { opacity: 1, scale: 1 },
+                    closed: { opacity: 0, scale: 0.95 }
+                  }}
+                  className="mt-4 text-center text-xs font-bold uppercase tracking-[0.3em] px-6 py-4 border border-brand-accent/50 text-brand-accent rounded-full hover:bg-brand-accent/10 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.15)]"
                 >
-                  Start Project
-                </a>
-              </div>
+                  Initiate Project
+                </motion.a>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
