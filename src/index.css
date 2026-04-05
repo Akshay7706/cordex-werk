@@ -3,11 +3,19 @@
 @tailwind utilities;
 
 @layer base {
-  body {
+  html, body {
     @apply bg-brand-dark text-white font-sans antialiased overflow-x-hidden selection:bg-brand-secondary selection:text-white;
+  }
+  
+  body {
     cursor: none;
   }
   
+  canvas, svg {
+    max-width: 100%;
+    display: block;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tight;
   }

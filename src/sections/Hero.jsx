@@ -43,7 +43,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-brand-dark">
+    <section 
+      id="home"
+      className="relative min-h-[100svh] flex items-center justify-center pt-20 px-8 overflow-hidden bg-brand-dark"
+    >
       {/* Background Layers */}
       <Starfield />
       <div className="absolute inset-0 bg-grain z-[1]"></div>
