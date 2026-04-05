@@ -116,7 +116,6 @@ export default function Pricing() {
 
               <button 
                 onClick={() => {
-                  console.log(`[PricingClick] User selected Tier: ${tier.name}`);
                   openInquiry(`${tier.name} Mission`);
                 }}
                 className={`w-full py-4 rounded-2xl font-bold uppercase tracking-widest text-xs transition-all duration-300 ${

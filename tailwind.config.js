@@ -7,17 +7,30 @@ export default {
   theme: {
     extend: {
       colors: {
+        stitch: {
+          background: 'var(--stitch-background)',
+          primary: 'var(--stitch-primary)',
+          secondary: 'var(--stitch-secondary)',
+          tertiary: 'var(--stitch-tertiary)',
+          surface: 'var(--stitch-surface)',
+          'surface-container-low': 'var(--stitch-surface-container-low)',
+          'surface-container': 'var(--stitch-surface-container)',
+          'surface-container-high': 'var(--stitch-surface-container-high)',
+          'surface-container-highest': 'var(--stitch-surface-container-highest)',
+          'outline-variant': 'var(--stitch-outline-variant)',
+        },
         brand: {
-          dark: '#000000',
-          primary: '#0A0A0A',
-          secondary: '#3A86FF',
-          accent: '#00E5FF',
-          glow: 'rgba(58, 134, 255, 0.4)',
+          dark: 'var(--stitch-background)',
+          primary: 'var(--stitch-surface-container-low)',
+          secondary: 'var(--stitch-secondary)',
+          accent: 'var(--stitch-primary)',
+          glow: 'rgba(164, 165, 255, 0.4)',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        heading: ['Space Grotesk', 'sans-serif'],
+        sans: ['var(--stitch-font-body)', 'Inter', 'sans-serif'],
+        heading: ['var(--stitch-font-headline)', 'Space Grotesk', 'sans-serif'],
+        label: ['var(--stitch-font-label)', 'Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       backgroundImage: {

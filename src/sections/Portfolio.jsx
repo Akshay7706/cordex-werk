@@ -19,7 +19,21 @@ const projects = [
     problem: 'Low onboarding completion rates due to a complex 12-step verification process.',
     result: 'Reduced time-to-onboard by 8m, leading to a massive increase in funded accounts.',
     img: project1,
-    path: '/portfolio/fintech-landing'
+    path: '/portfolio/fintech-landing',
+    gallery: [
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
+      'aura_fintech_dashboard_detailed_1775402391780.png'
+    ],
+    stats: [
+      { name: 'Jan', value: 400 }, { name: 'Feb', value: 600 }, { name: 'Mar', value: 800 },
+      { name: 'Apr', value: 1200 }, { name: 'May', value: 1500 }, { name: 'Jun', value: 2400 }
+    ],
+    techLog: [
+      'INITIALIZING_CORE_DECOMPRESSION... OK',
+      'SCANNING_FINANCIAL_ARCHITECTURE... COMPLETE',
+      'ENCRYPTING_MULTI_TENANT_LAYER... SECURE',
+      'SYNCING_REAL_TIME_ORCHESTRATOR... ACTIVE'
+    ]
   },
   {
     title: 'Nexus AI Studio',
@@ -28,7 +42,21 @@ const projects = [
     problem: 'Users were dropping off after the first generation due to slow processing speeds.',
     result: 'Improved user retention and increased monthly recurring revenue by 24%.',
     img: project2,
-    path: '/portfolio/aether-ai'
+    path: '/portfolio/aether-ai',
+    gallery: [
+      'https://images.unsplash.com/photo-1620825937374-87fc7d6aaf8e?auto=format&fit=crop&q=80&w=800',
+      'nexus_ai_studio_detailed_1775402442656.png'
+    ],
+    stats: [
+      { name: 'Jan', value: 90 }, { name: 'Feb', value: 85 }, { name: 'Mar', value: 70 },
+      { name: 'Apr', value: 55 }, { name: 'May', value: 45 }, { name: 'Jun', value: 40 }
+    ],
+    techLog: [
+      'BOOTING_INTELLIGENCE_ENGINE... READY',
+      'ORCHESTRATING_NODE_GRAPH... MAPPED',
+      'MODEL_QUANTIZATION_V4... APPLIED',
+      'LATENCY_COMPENSATION... OPTIMIZED'
+    ]
   },
   {
     title: 'Skyward Enterprise',
@@ -37,7 +65,21 @@ const projects = [
     problem: 'Critical data insights were inaccessible to field agents on mobile devices.',
     result: 'Daily active users among executive stakeholders increased from 15% to 85%.',
     img: project3,
-    path: '/portfolio/saas-dashboard'
+    path: '/portfolio/saas-dashboard',
+    gallery: [
+      'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800',
+      'skyward_analytics_detailed_v231_1775402488794.png'
+    ],
+    stats: [
+      { name: 'V1', value: 15 }, { name: 'V2', value: 35 }, { name: 'V3', value: 60 },
+      { name: 'V4', value: 85 }, { name: 'V5', value: 100 }
+    ],
+    techLog: [
+      'MAP_PROJECTION_V2... RENDERED',
+      'DATA_DENSITY_COMPRESSION... SUCCESS',
+      'GEO_SPATIAL_ORCHESTRATION... ACTIVE',
+      'EXECUTIVE_DASHBOARD_MIRROR... SYNCED'
+    ]
   }
 ];
 
@@ -99,13 +141,16 @@ const ProjectCard = ({ project, isMobile, onNavigate }) => (
 
 export default function Portfolio() {
   const targetRef = useRef(null);
-  const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
+  const { openProject } = useInquiry();
   const { scrollYProgress } = useScroll({ target: isMobile ? null : targetRef });
 
   const handleNavigate = (path, title) => {
-    console.log(`[Portfolio] User requested Analysis: ${title} (${path})`);
-    navigate(path);
+    // Find the project object based on path or title
+    const project = projects.find(p => p.title === title);
+    if (project) {
+      openProject(project);
+    }
   };
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);

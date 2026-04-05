@@ -1,0 +1,48 @@
+:root {
+  /* Core Brand Colors */
+  --stitch-background: #060e20;
+  --stitch-on-background: #dee5ff;
+  
+  --stitch-primary: #a4a5ff;
+  --stitch-on-primary: #1400a2;
+  --stitch-primary-container: #9596ff;
+  
+  --stitch-secondary: #d8e3fb;
+  --stitch-on-secondary: #475266;
+  --stitch-secondary-container: #3c475a;
+  
+  --stitch-tertiary: #af88ff;
+  --stitch-on-tertiary: #2b0065;
+  --stitch-tertiary-container: #8342f4;
+
+  /* Surface Hierarchy (Kinetic Observatory) */
+  --stitch-surface: #060e20;
+  --stitch-surface-dim: #060e20;
+  --stitch-surface-bright: #1f2b49;
+  
+  --stitch-surface-container-lowest: #000000;
+  --stitch-surface-container-low: #091328;
+  --stitch-surface-container: #0f1930;
+  --stitch-surface-container-high: #141f38;
+  --stitch-surface-container-highest: #192540;
+  
+  --stitch-on-surface: #dee5ff;
+  --stitch-on-surface-variant: #a3aac4;
+  
+  /* Outline & Borders (For Ghost Borders @ 15% opacity) */
+  --stitch-outline: #6d758c;
+  --stitch-outline-variant: #40485d;
+  
+  /* Functional Colors */
+  --stitch-error: #ff6e84;
+  --stitch-on-error: #490013;
+
+  /* Fonts */
+  --stitch-font-headline: "Space Grotesk", sans-serif;
+  --stitch-font-body: "Manrope", sans-serif;
+  --stitch-font-label: "Inter", sans-serif;
+
+  /* Effects */
+  --stitch-glass-blur: 24px;
+  --stitch-glass-opacity: 0.6;
+}

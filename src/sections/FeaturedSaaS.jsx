@@ -12,7 +12,6 @@ export default function FeaturedSaaS() {
   const navigate = useNavigate();
 
   const handleCaseStudyClick = () => {
-    console.log('[CaseStudy] Navigating to Aether AI (Aura AI) Breakdown');
     navigate('/portfolio/aether-ai');
   };
 

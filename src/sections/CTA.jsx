@@ -39,7 +39,6 @@ function MagneticButton({ children, href, onClick }) {
       onMouseLeave={handleMouseLeave}
       className="group inline-flex items-center justify-center w-28 h-28 md:w-36 md:h-36 rounded-full border border-white/20 hover:border-brand-accent bg-transparent hover:bg-brand-accent/10 transition-colors duration-300"
       onClick={() => {
-        console.log('[CTA] Magnetic Trigger: Initializing Mission Modal');
         onClick?.();
       }}
     >

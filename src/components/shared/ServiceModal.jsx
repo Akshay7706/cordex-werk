@@ -104,7 +104,6 @@ export default function ServiceModal({ service, onClose }) {
                     <div className="mt-12">
                        <button 
                          onClick={() => {
-                            console.log(`[ServiceModal] Initializing mission: ${service.title}`);
                             onClose();
                             setTimeout(() => openInquiry(service.title), 400);
                          }}

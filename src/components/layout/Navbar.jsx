@@ -23,7 +23,6 @@ export default function Navbar() {
   const { openInquiry } = useInquiry();
 
   const handleNavClick = (href, name) => {
-    console.log(`[Navigation] User requested: ${name} (${href})`);
     if (location.pathname !== '/') {
       navigate('/');
       // Wait for navigation then scroll
