@@ -4,21 +4,31 @@ const InquiryContext = createContext();
 
 export function InquiryProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState({ plan: null });
+  const [isCodexOpen, setIsCodexOpen] = useState(false);
+  const [data, setData] = useState({ plan: '' });
+  const [currentArticle, setCurrentArticle] = useState(null);
 
-  const openInquiry = (plan = null) => {
-    console.log(`[InquirySystem] Opening inquiry modal for: ${plan || 'General Inquiry'}`);
-    setData({ plan });
+  const openInquiry = (planName = '') => {
+    console.log(`[InquiryContext] Opening Modal for: ${planName}`);
+    setData({ plan: planName });
     setIsOpen(true);
   };
 
-  const closeInquiry = () => {
-    console.log('[InquirySystem] Closing inquiry modal');
-    setIsOpen(false);
+  const closeInquiry = () => setIsOpen(false);
+
+  const openCodex = (article) => {
+    console.log(`[InquiryContext] Opening Codex for: ${article.title}`);
+    setCurrentArticle(article);
+    setIsCodexOpen(true);
   };
 
+  const closeCodex = () => setIsCodexOpen(false);
+
   return (
-    <InquiryContext.Provider value={{ isOpen, openInquiry, closeInquiry, data }}>
+    <InquiryContext.Provider value={{ 
+      isOpen, openInquiry, closeInquiry, data,
+      isCodexOpen, openCodex, closeCodex, currentArticle
+    }}>
       {children}
     </InquiryContext.Provider>
   );

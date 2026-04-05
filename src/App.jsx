@@ -15,6 +15,7 @@ import ChromaticAberration from './components/shared/ChromaticAberration';
 import MagneticCursor from './components/shared/MagneticCursor';
 import { InquiryProvider } from './context/InquiryContext';
 import InquiryModal from './components/shared/InquiryModal';
+import CodexModal from './components/shared/CodexModal';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -56,6 +57,7 @@ function App() {
         <AnimatedRoutes />
       </BrowserRouter>
       <InquiryModal />
+      <CodexModal />
     </InquiryProvider>
   );
 }

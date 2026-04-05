@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, BookOpen } from 'lucide-react';
+import { useInquiry } from '../context/InquiryContext';
 
 const insights = [
   {
@@ -83,7 +84,10 @@ export default function Codex() {
 
               <div className="flex items-center justify-between mt-auto">
                 <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest">{insight.readTime}</span>
-                <button className="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-[0.2em] group-hover:text-brand-accent transition-colors">
+                <button 
+                  onClick={() => openCodex(insight)}
+                  className="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-[0.2em] group-hover:text-brand-accent transition-colors"
+                >
                   Read Analysis <ArrowRight className="w-3 h-3 translate-x-0 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
