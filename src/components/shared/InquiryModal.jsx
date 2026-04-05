@@ -57,25 +57,24 @@ export default function InquiryModal() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-xl bg-brand-dark/90 border border-white/10 rounded-3xl overflow-hidden glass-panel shadow-[0_0_50px_rgba(58,134,255,0.2)]"
+            className="relative w-full max-w-lg bg-brand-dark border border-white/10 rounded-[2.5rem] shadow-2xl p-6 md:p-12 overflow-hidden mx-4"
           >
-            {/* Header */}
-            <div className="p-8 border-b border-white/5 flex justify-between items-center">
-              <div>
-                <h3 className="text-2xl font-heading font-bold text-white uppercase tracking-tight">
-                  {data.plan ? `Selected Plan: ${data.plan}` : 'Start Your Mission'}
-                </h3>
-                <p className="text-gray-500 text-xs font-mono mt-1">CORDEX_STRATEGY_PROTOCOL_V4.0</p>
-              </div>
+            <div className="absolute top-4 right-4 md:top-8 md:right-8">
               <button 
                 onClick={closeInquiry}
-                className="p-2 hover:bg-white/5 rounded-full transition-colors text-gray-500 hover:text-white"
+                className="w-12 h-12 md:w-10 md:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
               >
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 md:w-5 md:h-5" />
               </button>
             </div>
 
-            {/* Content */}
+            {/* Header */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-heading font-bold text-white uppercase tracking-tight">
+                {data.plan ? `Selected Plan: ${data.plan}` : 'Start Your Mission'}
+              </h3>
+              <p className="text-gray-500 text-[10px] font-mono mt-1 uppercase tracking-widest">CORDEX_STRATEGY_PROTOCOL_V4.0</p>
+            </div>
             <div className="p-8">
               {status === 'success' ? (
                 <motion.div 

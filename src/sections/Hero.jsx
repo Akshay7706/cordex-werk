@@ -67,24 +67,27 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-heading font-black text-white leading-[0.9] tracking-tighter mb-10">
+            <h1 
+              className="font-heading font-black text-white leading-[0.9] tracking-tighter mb-10"
+              style={{ fontSize: 'clamp(3.5rem, 15vw, 10rem)' }}
+            >
               CORDEX<br /><span className="text-brand-accent">WERK.</span>
             </h1>
             
-            <p className="text-gray-500 text-sm md:text-lg font-bold leading-relaxed mb-12 max-w-2xl mx-auto uppercase tracking-[0.5em] opacity-60">
+            <p className="text-gray-500 text-sm md:text-lg font-bold leading-relaxed mb-12 max-w-2xl mx-auto uppercase tracking-[0.5em] opacity-60 px-4">
               Elite SaaS Engineering & Product Strategy.
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-6">
               <button 
                 onClick={() => openInquiry('Project Launch')}
-                className="px-10 py-5 bg-white text-black font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-brand-accent hover:text-black transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+                className="w-full sm:w-auto px-10 py-5 bg-white text-black font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-brand-accent hover:text-black transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.15)]"
               >
                 Launch Your Project
               </button>
               <button 
                 onClick={() => openInquiry('Strategy Call')}
-                className="px-10 py-5 bg-white/5 border border-white/10 text-white font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-brand-accent/10 hover:border-brand-accent/50 backdrop-blur-md transition-all duration-500"
+                className="w-full sm:w-auto px-10 py-5 bg-white/5 border border-white/10 text-white font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-brand-accent/10 hover:border-brand-accent/50 backdrop-blur-md transition-all duration-500"
               >
                 Book Strategy Call
               </button>

@@ -126,6 +126,18 @@ export default function Portfolio() {
           <span className="text-brand-accent text-xs font-bold tracking-[0.25em] uppercase mb-3 block">
             Selected Works
           </span>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="md:hidden flex items-center gap-2 text-brand-accent text-[8px] font-bold uppercase tracking-[0.3em] mb-8"
+          >
+            <motion.div 
+              animate={{ x: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-4 h-[1px] bg-brand-accent"
+            />
+            Swipe to Explore
+          </motion.div>
           <h2 className="text-4xl md:text-7xl font-heading font-black text-white tracking-tighter leading-none">
             <ScrambleText text="CASE" />{' '}
             <ScrambleText text="ANALYSIS." />

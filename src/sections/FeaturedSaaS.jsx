@@ -88,6 +88,20 @@ export default function FeaturedSaaS() {
                        <p className="text-sm font-bold text-white">High-Performance</p>
                     </div>
                  </div>
+                 {/* Result Metrics - Stacked on Mobile */}
+                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-white/5">
+                   {[
+                     { label: 'Latency', value: '-65%', sub: 'Global Peak' },
+                     { label: 'Conversion', value: '+124%', sub: 'A/B Proven' },
+                     { label: 'Scale', value: '10M+', sub: 'Active Req' }
+                   ].map((metric, i) => (
+                     <div key={i} className="space-y-1">
+                       <p className="text-[8px] font-bold text-gray-500 uppercase tracking-widest">{metric.label}</p>
+                       <p className="text-2xl font-heading font-black text-white italic">{metric.value}</p>
+                       <p className="text-[8px] text-brand-accent/60 font-mono italic">{metric.sub}</p>
+                     </div>
+                   ))}
+                 </div>
               </motion.div>
             </div>
           </motion.div>

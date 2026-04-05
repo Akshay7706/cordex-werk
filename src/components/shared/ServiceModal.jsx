@@ -27,24 +27,24 @@ export default function ServiceModal({ service, onClose }) {
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl max-h-[90vh] bg-brand-dark/50 border border-white/10 rounded-[2.5rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col pointer-events-auto"
+            className="relative w-full max-w-4xl max-h-[95vh] bg-brand-dark/50 border border-white/10 rounded-[2rem] md:rounded-[2.5rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col pointer-events-auto mx-4"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-8 py-6 border-b border-white/5 bg-white/[0.02]">
+            <div className="flex items-center justify-between px-6 md:px-8 py-6 border-b border-white/5 bg-white/[0.02]">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
                    <span className="font-mono text-sm font-bold">{service.tag}</span>
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white uppercase tracking-widest">{service.title}</h3>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest">Capabilities Analysis</p>
+                  <h3 className="text-[10px] md:text-sm font-bold text-white uppercase tracking-widest">{service.title}</h3>
+                  <p className="text-[8px] md:text-[10px] text-gray-500 uppercase tracking-widest leading-none mt-1">Capabilities Analysis</p>
                 </div>
               </div>
               <button 
                 onClick={onClose}
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                className="w-12 h-12 md:w-10 md:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
               >
-                <X className="w-5 h-5" />
+                <X className="w-6 h-6 md:w-5 md:h-5" />
               </button>
             </div>
 
