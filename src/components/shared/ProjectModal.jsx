@@ -78,15 +78,15 @@ export default function ProjectModal() {
             initial={{ opacity: 0, scale: 0.95, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 30 }}
-            className="relative w-full max-w-[1400px] h-[90vh] bg-brand-dark/95 border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col pointer-events-auto mx-4 z-10"
+            className="relative w-full max-w-[1400px] h-[90vh] bg-[#03060A] border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col pointer-events-auto mx-4 z-10"
           >
-            <div className="relative z-20 flex flex-col h-full">
+            <div className="relative z-20 flex flex-col h-full text-white">
               {/* Header Navigation */}
-              <div className="px-8 py-6 border-b border-white/5 bg-white/[0.01] flex items-center justify-between">
+              <div className="px-8 py-6 border-b border-white/5 bg-black/60 backdrop-blur-md flex items-center justify-between">
                 <div className="flex items-center gap-6">
                   <button 
                     onClick={closeProject}
-                    className="flex items-center gap-3 text-[10px] font-bold text-gray-500 hover:text-brand-accent transition-colors uppercase tracking-[0.2em]"
+                    className="flex items-center gap-3 text-[10px] font-bold text-gray-400 hover:text-brand-accent transition-colors uppercase tracking-[0.2em]"
                   >
                     <ArrowRight className="w-4 h-4 rotate-180" /> Exit_Analysis
                   </button>
@@ -97,14 +97,14 @@ export default function ProjectModal() {
                     </div>
                     <div>
                       <h3 className="text-[10px] font-bold text-white uppercase tracking-widest leading-none">Intelligence_Briefing</h3>
-                      <p className="text-[8px] text-gray-500 uppercase tracking-widest leading-none mt-1">Status: Operational</p>
+                      <p className="text-[8px] text-gray-500 uppercase tracking-widest leading-none mt-1">Status: SECURE_SYNC</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
                    <div className="hidden lg:flex items-center gap-6 mr-8">
-                      {['Security_Hardened', 'Edge_Optimized', 'Multi_Tenant'].map(tag => (
+                      {['Security_Hardened', 'Edge_Optimized', 'Non_Custodial'].map(tag => (
                         <span key={tag} className="text-[8px] font-mono text-gray-600 uppercase tracking-widest">{tag}</span>
                       ))}
                    </div>
@@ -120,7 +120,7 @@ export default function ProjectModal() {
               {/* Scrollable Content */}
               <div className="flex-1 overflow-y-auto custom-scrollbar scroll-smooth">
                 {/* Hero Feature with Tactical Overlays */}
-                <div className="relative h-[50vh] md:h-[60vh] w-full bg-black/40 border-b border-white/5 overflow-hidden">
+                <div className="relative h-[50vh] md:h-[60vh] w-full bg-black border-b border-white/10 overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.img 
                       key={activeImage}
@@ -130,12 +130,12 @@ export default function ProjectModal() {
                       transition={{ duration: 0.8 }}
                       src={activeProject.gallery ? activeProject.gallery[activeImage] : activeProject.img} 
                       alt={activeProject.title} 
-                      className="w-full h-full object-cover opacity-60 grayscale contrast-125" 
+                      className="w-full h-full object-cover opacity-40 grayscale contrast-125" 
                     />
                   </AnimatePresence>
                   
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-scanlines opacity-5 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#03060A] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-scanlines opacity-[0.03] pointer-events-none" />
                   
                   {/* Tactical Side Data */}
                   <div className="absolute top-12 left-12 hidden xl:block space-y-8">
@@ -147,17 +147,17 @@ export default function ProjectModal() {
                         <motion.span 
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
-                          className="px-4 py-1.5 bg-brand-accent/10 border border-brand-accent/30 rounded-full text-[10px] text-brand-accent font-bold uppercase tracking-widest mb-6 inline-block"
+                          className="px-4 py-1.5 bg-brand-accent/20 border border-brand-accent/40 rounded-full text-[10px] text-brand-accent font-black uppercase tracking-widest mb-6 inline-block shadow-[0_0_20px_rgba(0,229,255,0.2)]"
                         >
                            System_Class: {activeProject.category}
                         </motion.span>
-                        <h2 className="text-5xl md:text-8xl lg:text-9xl font-heading font-black text-white italic leading-none uppercase tracking-tighter mb-4">
+                        <h2 className="text-5xl md:text-8xl lg:text-9xl font-heading font-black text-white italic leading-none uppercase tracking-tighter mb-4 drop-shadow-2xl">
                            {activeProject.title}
                         </h2>
                         <div className="flex items-center gap-8">
                            <div className="flex items-center gap-4 text-brand-accent">
                               <TrendingUp className="w-6 h-6 md:w-8 md:h-8" />
-                              <span className="text-2xl md:text-4xl font-black italic uppercase tracking-tighter">{activeProject.metrics}</span>
+                              <span className="text-2xl md:text-4xl font-black italic uppercase tracking-tighter drop-shadow-lg">{activeProject.metrics}</span>
                            </div>
                            <div className="h-8 w-[1px] bg-white/20" />
                            <div className="hidden sm:flex items-center gap-3">
@@ -194,7 +194,7 @@ export default function ProjectModal() {
                             <h4 className="text-[12px] font-bold text-white uppercase tracking-[0.4em] flex items-center gap-4">
                                <div className="w-12 h-[1px] bg-brand-accent" /> THE_CHALLENGE
                             </h4>
-                            <p className="text-xl md:text-2xl font-light text-gray-400 leading-relaxed font-heading">
+                            <p className="text-xl md:text-2xl font-light text-gray-300 leading-relaxed font-heading">
                                {activeProject.problem}
                             </p>
                          </div>
@@ -222,7 +222,7 @@ export default function ProjectModal() {
                             </div>
                          </div>
                          
-                         <div className="h-[300px] w-full bg-white/[0.01] border border-white/5 rounded-[2rem] p-8">
+                         <div className="h-[300px] w-full bg-white/[0.02] border border-white/5 rounded-[2rem] p-8 shadow-inner">
                             <ResponsiveContainer width="100%" height="100%">
                                <AreaChart data={activeProject.stats}>
                                   <defs>
@@ -232,7 +232,7 @@ export default function ProjectModal() {
                                      </linearGradient>
                                   </defs>
                                   <Tooltip 
-                                    contentStyle={{ backgroundColor: '#03060A', border: '1px solid rgba(0,229,255,0.2)', borderRadius: '12px' }}
+                                    contentStyle={{ backgroundColor: '#03060A', border: '1px solid rgba(0,229,255,0.2)', borderRadius: '12px', color: '#FFF' }}
                                     itemStyle={{ color: '#00E5FF', fontSize: '10px', textTransform: 'uppercase' }}
                                   />
                                   <Area type="monotone" dataKey="value" stroke="#00E5FF" strokeWidth={3} fillOpacity={1} fill="url(#colorVal)" />
@@ -259,8 +259,8 @@ export default function ProjectModal() {
 
                    {/* Right: Technical Metadata & CTA */}
                    <div className="space-y-12">
-                      <div className="p-10 rounded-[3rem] bg-brand-accent/5 border border-brand-accent/20 relative overflow-hidden">
-                         <div className="absolute inset-0 bg-grain opacity-[0.03]" />
+                      <div className="p-10 rounded-[3rem] bg-brand-accent/[0.03] border border-brand-accent/20 relative overflow-hidden backdrop-blur-sm">
+                         <div className="absolute inset-0 bg-grain opacity-[0.02]" />
                          <div className="relative z-10">
                             <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-12">DEK_TECHNICAL_SPECS_V4</h4>
                             
@@ -293,9 +293,9 @@ export default function ProjectModal() {
                       </div>
 
                       {/* Additional Technical Context */}
-                      <div className="px-10 py-8 bg-black/40 rounded-[2rem] border border-white/5">
+                      <div className="px-10 py-8 bg-black/60 rounded-[2rem] border border-white/10">
                          <div className="flex items-center gap-4 mb-6">
-                            <Eye className="w-5 h-5 text-gray-600" />
+                            <Eye className="w-5 h-5 text-gray-500" />
                             <span className="text-[10px] font-black text-white uppercase tracking-widest">Observability_Active</span>
                          </div>
                          <p className="text-[8px] text-gray-600 uppercase tracking-[0.4em] font-mono leading-relaxed">
@@ -309,7 +309,7 @@ export default function ProjectModal() {
             </div>
 
             {/* Global Grain Overlay */}
-            <div className="absolute inset-0 bg-grain pointer-events-none opacity-[0.02] z-0"></div>
+            <div className="absolute inset-0 bg-grain pointer-events-none opacity-[0.01] z-0"></div>
           </motion.div>
         </div>
       )}

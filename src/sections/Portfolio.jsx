@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ScrambleText from '../components/shared/ScrambleText';
 import React, { useRef, useState, useEffect } from 'react';
+import { useInquiry } from '../context/InquiryContext';
 
 // Placeholder image paths - assuming the user has these or similar assets
 const project1 = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800';
@@ -162,39 +163,40 @@ export default function Portfolio() {
   const x = useTransform(scrollYProgress, [0, 1], ['0%', '-72%']);
 
   return (
-    <section id="portfolio" ref={targetRef} className={`relative z-10 bg-brand-dark ${isMobile ? 'py-20' : 'h-[400vh]'}`}>
-      <div className={isMobile ? 'px-6' : 'sticky top-0 h-screen overflow-hidden flex flex-col'}>
+    <section id="portfolio" ref={targetRef} className={`relative z-10 bg-brand-dark ${isMobile ? 'py-32' : 'h-[400vh]'}`}>
+      {/* Smooth Transition from Hero */}
+      <div className="absolute top-0 left-0 w-full h-32 horizon-transition pointer-events-none z-20" />
+
+      <div className={isMobile ? 'container mx-auto px-6' : 'sticky top-0 h-screen overflow-hidden flex flex-col'}>
         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
         <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-secondary/10 rounded-full blur-[150px] pointer-events-none" />
 
-        <div className={`relative z-10 flex-shrink-0 ${isMobile ? 'mb-12' : 'px-6 lg:px-16 pt-16 pb-8'}`}>
+        <div className={`relative z-10 flex-shrink-0 ${isMobile ? 'mb-16' : 'px-6 lg:px-16 pt-16 pb-8'}`}>
           <span className="text-brand-accent text-xs font-bold tracking-[0.25em] uppercase mb-3 block">
             Selected Works
           </span>
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="md:hidden flex items-center gap-2 text-brand-accent text-[8px] font-bold uppercase tracking-[0.3em] mb-8"
-          >
-            <motion.div 
-              animate={{ x: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-4 h-[1px] bg-brand-accent"
-            />
-            Swipe to Explore
-          </motion.div>
-          <h2 className="text-4xl md:text-7xl font-heading font-black text-white tracking-tighter leading-none">
+          <h2 className="text-4xl md:text-7xl font-heading font-black text-white tracking-tighter leading-none mb-4">
             <ScrambleText text="CASE" />{' '}
             <ScrambleText text="ANALYSIS." />
           </h2>
+          {isMobile && (
+             <p className="text-gray-500 text-[10px] uppercase tracking-[0.3em] font-bold">
+               Mission_Briefing_Inventory
+             </p>
+          )}
         </div>
 
         {isMobile ? (
-          <div className="relative z-10 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8 no-scrollbar scroll-smooth">
+          <div className="relative z-10 space-y-12 pb-20">
             {projects.map((project, idx) => (
-              <div key={idx} className="w-[85vw] flex-shrink-0 snap-center">
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
                 <ProjectCard project={project} isMobile={true} onNavigate={handleNavigate} />
-              </div>
+              </motion.div>
             ))}
           </div>
         ) : (

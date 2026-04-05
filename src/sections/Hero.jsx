@@ -53,6 +53,16 @@ export default function Hero() {
       <div className="absolute inset-0 bg-aurora animate-aurora z-0 opacity-30"></div>
       <motion.div style={{ transform: gridTransform }} className="absolute inset-[-10%] w-[120%] h-[120%] bg-grid pointer-events-none z-0 opacity-20"></motion.div>
       <AbstractScene />
+
+      {/* Digital Horizon */}
+      <div className="absolute bottom-0 left-0 w-full h-[100px] bg-gradient-to-t from-brand-dark to-transparent z-[5] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/10 z-[6] overflow-hidden">
+        <motion.div 
+          animate={{ x: ['-100%', '100%'] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+          className="w-1/3 h-full bg-gradient-to-r from-transparent via-brand-accent/50 to-transparent"
+        />
+      </div>
       
       <div className="container mx-auto px-6 lg:px-16 pt-32 pb-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
