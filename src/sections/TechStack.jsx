@@ -8,7 +8,7 @@ const stack = [
   { name: 'Tailwind CSS', icon: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
   { name: 'Framer', icon: 'https://cdn.simpleicons.org/framer/black/white' },
   { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker/2496ED' },
-  { name: 'AWS', icon: 'https://cdn.simpleicons.org/amazonaws/FF9900' }
+  { name: 'AWS', icon: 'https://cdn.simpleicons.org/amazonwebservices/FF9900' }
 ];
 
 export default function TechStack() {

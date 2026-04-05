@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, TrendingUp, Zap, ArrowUpRight } from 'lucide-react';
 
 const results = [
@@ -8,6 +9,13 @@ const results = [
 ];
 
 export default function FeaturedSaaS() {
+  const navigate = useNavigate();
+
+  const handleCaseStudyClick = () => {
+    console.log('[CaseStudy] Navigating to Aether AI (Aura AI) Breakdown');
+    navigate('/portfolio/aether-ai');
+  };
+
   return (
     <section className="py-24 bg-brand-dark/50 relative overflow-hidden">
       <div className="absolute inset-0 bg-grain opacity-[0.03] pointer-events-none"></div>
@@ -120,7 +128,10 @@ export default function FeaturedSaaS() {
                 ))}
               </ul>
 
-              <button className="flex items-center gap-3 text-white text-xs font-bold uppercase tracking-[0.3em] group">
+              <button 
+                onClick={handleCaseStudyClick}
+                className="flex items-center gap-3 text-white text-xs font-bold uppercase tracking-[0.3em] group"
+              >
                 Full Technical Breakdown <ArrowUpRight className="w-4 h-4 text-brand-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </motion.div>

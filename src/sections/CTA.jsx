@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
+import React, { useRef, useState } from 'react';
 import { Send, CheckCircle, Mail, Globe } from 'lucide-react';
+import { useInquiry } from '../context/InquiryContext';
 
 const InstagramIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -10,7 +11,7 @@ const InstagramIcon = () => (
   </svg>
 );
 
-function MagneticButton({ children, href }) {
+function MagneticButton({ children, href, onClick }) {
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -37,7 +38,10 @@ function MagneticButton({ children, href }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="group inline-flex items-center justify-center w-28 h-28 md:w-36 md:h-36 rounded-full border border-white/20 hover:border-brand-accent bg-transparent hover:bg-brand-accent/10 transition-colors duration-300"
-      onClick={() => document.getElementById('name')?.focus()}
+      onClick={() => {
+        console.log('[CTA] Magnetic Trigger: Initializing Mission Modal');
+        onClick?.();
+      }}
     >
       <div className="text-center">
         <p className="text-white font-bold text-xs tracking-widest uppercase group-hover:text-brand-accent transition-colors">Start</p>
@@ -50,6 +54,7 @@ function MagneticButton({ children, href }) {
 
 export default function CTA() {
   const [status, setStatus] = useState('');
+  const { openInquiry } = useInquiry();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -130,7 +135,7 @@ export default function CTA() {
             </div>
             
             <div className="mb-12">
-              <MagneticButton />
+              <MagneticButton onClick={() => openInquiry('Mission Start')} />
             </div>
             
             <div className="flex flex-col gap-6">

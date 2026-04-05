@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useInquiry } from '../context/InquiryContext';
 
 const services = [
   {
@@ -38,6 +39,7 @@ const services = [
 ];
 
 function SidePanel({ service, onClose }) {
+  const { openInquiry } = useInquiry();
   if (!service) return null;
 
   return (
@@ -106,12 +108,14 @@ function SidePanel({ service, onClose }) {
         <div className="mt-16 pt-8 border-t border-white/5">
            <button 
              onClick={() => {
+                console.log(`[ServiceInquiry] Initializing mission for: ${service.title}`);
                 onClose();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                openInquiry(service.title);
              }}
-             className="w-full py-4 bg-brand-primary text-white font-bold uppercase tracking-widest text-xs rounded-lg hover:bg-brand-secondary transition-all"
+             className="w-full py-4 bg-white text-black font-bold uppercase tracking-[0.3em] text-[10px] rounded-xl hover:bg-brand-accent transition-all duration-300 flex items-center justify-center gap-2 group"
            >
-             Start Your Journey
+             Start Architecture Strategy
+             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
            </button>
         </div>
       </motion.div>
@@ -186,7 +190,10 @@ export default function Services() {
                 transition={{ delay: idx * 0.1 }}
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => setActiveService(service)}
+                onClick={() => {
+                  console.log(`[ServiceClick] User exploring: ${service.title}`);
+                  setActiveService(service);
+                }}
                 className={`group relative border-t border-white/10 ${isMobile ? 'py-6' : 'py-10'} cursor-pointer`}
               >
                 {/* Row hover glow */}

@@ -13,6 +13,8 @@ import GlobalLoader from './components/GlobalLoader';
 import PageTransition from './components/PageTransition';
 import ChromaticAberration from './components/shared/ChromaticAberration';
 import MagneticCursor from './components/shared/MagneticCursor';
+import { InquiryProvider } from './context/InquiryContext';
+import InquiryModal from './components/shared/InquiryModal';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -41,15 +43,20 @@ function AnimatedRoutes() {
 function App() {
   const [loaderDone, setLoaderDone] = useState(false);
 
+  useEffect(() => {
+    console.log('%c[CORDEX WERK] Systems Initialized.', 'color: #3A86FF; font-weight: bold; font-size: 14px;');
+  }, []);
+
   return (
-    <>
+    <InquiryProvider>
       <ChromaticAberration />
       <MagneticCursor />
       {!loaderDone && <GlobalLoader onDone={() => setLoaderDone(true)} />}
       <BrowserRouter>
         <AnimatedRoutes />
       </BrowserRouter>
-    </>
+      <InquiryModal />
+    </InquiryProvider>
   );
 }
 

@@ -1,5 +1,7 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import { useInquiry } from '../context/InquiryContext';
 
 const tiers = [
   {
@@ -45,6 +47,7 @@ const tiers = [
 ];
 
 export default function Pricing() {
+  const { openInquiry } = useInquiry();
   return (
     <section id="pricing" className="py-24 bg-brand-dark overflow-hidden border-b border-white/5 relative">
       <div className="container mx-auto px-6 lg:px-16 relative z-10">
@@ -111,11 +114,17 @@ export default function Pricing() {
                 ))}
               </div>
 
-              <button className={`w-full py-4 rounded-2xl font-bold uppercase tracking-widest text-xs transition-all duration-300 ${
-                tier.popular 
-                ? 'bg-brand-accent text-black hover:bg-white hover:text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
-                : 'bg-white/5 text-white hover:bg-brand-accent hover:text-black border border-white/10'
-              }`}>
+              <button 
+                onClick={() => {
+                  console.log(`[PricingClick] User selected Tier: ${tier.name}`);
+                  openInquiry(`${tier.name} Mission`);
+                }}
+                className={`w-full py-4 rounded-2xl font-bold uppercase tracking-widest text-xs transition-all duration-300 ${
+                  tier.popular 
+                  ? 'bg-brand-accent text-black hover:bg-white hover:text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
+                  : 'bg-white/5 text-white hover:bg-brand-accent hover:text-black border border-white/10'
+                }`}
+              >
                 Initialize Mission
               </button>
             </motion.div>

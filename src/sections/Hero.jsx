@@ -1,10 +1,12 @@
+import React from 'react';
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Starfield from '../components/shared/Starfield';
 import AbstractScene from '../components/3d/AbstractScene';
-import ScrambleText from '../components/shared/ScrambleText';
+import { useInquiry } from '../context/InquiryContext';
 
 export default function Hero() {
+  const { openInquiry } = useInquiry();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -65,21 +67,27 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-black text-white leading-[1] tracking-tighter mb-10">
-              CORDEX <span className="text-gray-500 font-light">WERK</span><span className="text-brand-accent">.</span>
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-heading font-black text-white leading-[0.9] tracking-tighter mb-10">
+              CORDEX<br /><span className="text-brand-accent">WERK.</span>
             </h1>
             
-            <p className="text-gray-400 text-lg md:text-2xl font-light leading-relaxed mb-12 max-w-3xl mx-auto uppercase tracking-[0.2em] opacity-80">
-              High-Performance Engineering <span className="mx-4 text-white/20">|</span> SaaS & Startup Strategy
+            <p className="text-gray-500 text-sm md:text-lg font-bold leading-relaxed mb-12 max-w-2xl mx-auto uppercase tracking-[0.5em] opacity-60">
+              Elite SaaS Engineering & Product Strategy.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center">
-              <a href="#contact" className="px-10 py-5 bg-white text-black font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-brand-accent hover:text-black transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.15)]">
+              <button 
+                onClick={() => openInquiry('Project Launch')}
+                className="px-10 py-5 bg-white text-black font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-brand-accent hover:text-black transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+              >
                 Launch Your Project
-              </a>
-              <a href="#contact" className="px-10 py-5 bg-white/5 border border-white/10 text-white font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-brand-accent/10 hover:border-brand-accent/50 backdrop-blur-md transition-all duration-500">
+              </button>
+              <button 
+                onClick={() => openInquiry('Strategy Call')}
+                className="px-10 py-5 bg-white/5 border border-white/10 text-white font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-brand-accent/10 hover:border-brand-accent/50 backdrop-blur-md transition-all duration-500"
+              >
                 Book Strategy Call
-              </a>
+              </button>
             </div>
           </motion.div>
 

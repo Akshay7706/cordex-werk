@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useInquiry } from '../../context/InquiryContext';
 
 const navLinks = [
   { name: 'Capabilities', href: '#services' },
@@ -16,6 +18,21 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const lastScrollY = useRef(0);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { openInquiry } = useInquiry();
+
+  const handleNavClick = (href, name) => {
+    console.log(`[Navigation] User requested: ${name} (${href})`);
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation then scroll
+      setTimeout(() => {
+        const id = href.replace('#', '');
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -105,14 +122,13 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* CTA */}
           <div className="hidden md:flex">
-            <a
-              href="#contact"
+            <button
+              onClick={() => openInquiry('Strategy Call')}
               className="px-6 py-2.5 rounded-full border border-brand-accent/30 bg-brand-accent/5 text-brand-accent text-xs font-bold uppercase tracking-widest hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(0,229,255,0.1)]"
             >
               Book a Free Call
-            </a>
+            </button>
           </div>
 
           {/* Mobile toggle */}
@@ -159,17 +175,15 @@ export default function Navbar() {
                   </motion.a>
                 ))}
                 
-                <motion.a
-                  href="#contact"
-                  onClick={() => setMobileOpen(false)}
-                  variants={{
-                    open: { opacity: 1, scale: 1 },
-                    closed: { opacity: 0, scale: 0.95 }
+                <button
+                  onClick={() => {
+                    setMobileOpen(false);
+                    openInquiry('Mobile Strategy Call');
                   }}
                   className="mt-4 text-center text-xs font-bold uppercase tracking-[0.3em] px-6 py-4 bg-white text-black rounded-full hover:bg-brand-accent transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                 >
                   Book a Free Call
-                </motion.a>
+                </button>
               </motion.div>
             </motion.div>
           )}

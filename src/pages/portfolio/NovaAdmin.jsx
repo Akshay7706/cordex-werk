@@ -21,14 +21,6 @@ export default function NovaAdmin() {
   const [newCat, setNewCat] = useState('');
   const [newImg, setNewImg] = useState('');
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      fetchProducts();
-    }
-  }, [isAuthenticated]);
-
   const fetchProducts = async () => {
     try {
       const res = await fetch('/api/products');
@@ -40,6 +32,12 @@ export default function NovaAdmin() {
       console.error("Failed to fetch products:", err);
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchProducts();
+    }
+  }, [isAuthenticated]);
 
   const handleLogin = async (e) => {
     e.preventDefault();

@@ -1,9 +1,8 @@
-import { motion } from 'framer-motion';
-import { ExternalLink, ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import ScrambleText from '../components/shared/ScrambleText';
-import { useRef, useState, useEffect } from 'react';
-import { useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
 
 // Placeholder image paths - assuming the user has these or similar assets
 const project1 = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800';
@@ -17,38 +16,32 @@ const projects = [
     title: 'Aura Fintech',
     category: 'SaaS Platform',
     metrics: '+142% Conversion Rate',
-    description: 'High-end banking interface re-engineered for trust and speed. We focused on reducing friction in the KYC flow.',
     problem: 'Low onboarding completion rates due to a complex 12-step verification process.',
-    solution: 'Simplified 3-step biometric-first verification with real-time feedback loops.',
     result: 'Reduced time-to-onboard by 8m, leading to a massive increase in funded accounts.',
     img: project1,
-    link: '#'
+    path: '/portfolio/fintech-landing'
   },
   {
     title: 'Nexus AI Studio',
     category: 'AI Startup',
     metrics: '-40% Churn Rate',
-    description: 'A dark-themed platform empowering creators to generate visuals using state-of-the-art machine learning models.',
     problem: 'Users were dropping off after the first generation due to slow processing speeds.',
-    solution: 'Implemented a custom GPU-aware queuing system and a cinematic loading state.',
     result: 'Improved user retention and increased monthly recurring revenue by 24%.',
     img: project2,
-    link: '#'
+    path: '/portfolio/aether-ai'
   },
   {
     title: 'Skyward Enterprise',
     category: 'Analytics Dashboard',
     metrics: '100% Mobile Optimized',
-    description: 'Enterprise-grade architecture for businesses demanding market-dominating elite tools.',
     problem: 'Critical data insights were inaccessible to field agents on mobile devices.',
-    solution: 'Hybrid responsive dashboard with GLSL-powered data visualizations.',
     result: 'Daily active users among executive stakeholders increased from 15% to 85%.',
     img: project3,
-    link: '#'
+    path: '/portfolio/saas-dashboard'
   }
 ];
 
-const ProjectCard = ({ project, isMobile }) => (
+const ProjectCard = ({ project, isMobile, onNavigate }) => (
   <div className={`group relative flex-shrink-0 overflow-hidden rounded-3xl border border-white/10 hover:border-brand-accent/40 transition-all duration-700 hover:shadow-[0_0_40px_rgba(0,229,255,0.12)] ${
     isMobile ? 'w-full h-[500px] mb-6' : 'w-[85vw] md:w-[45vw] lg:w-[35vw] h-[65vh]'
   }`}>
@@ -92,23 +85,28 @@ const ProjectCard = ({ project, isMobile }) => (
         </div>
       </div>
 
-      <a
-        href={project.link}
+      <button
+        onClick={() => onNavigate(project.path, project.title)}
         className={`inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:text-brand-accent transition-colors w-max transition-all duration-500 ${
           isMobile ? 'opacity-100' : 'opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 delay-200'
         }`}
       >
         View Technical Breakdown <ArrowUpRight className="w-4 h-4" />
-      </a>
+      </button>
     </div>
   </div>
 );
 
 export default function Portfolio() {
   const targetRef = useRef(null);
+  const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
   const { scrollYProgress } = useScroll({ target: isMobile ? null : targetRef });
 
+  const handleNavigate = (path, title) => {
+    console.log(`[Portfolio] User requested Analysis: ${title} (${path})`);
+    navigate(path);
+  };
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
     handleResize();
@@ -138,7 +136,7 @@ export default function Portfolio() {
           <div className="relative z-10 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8 no-scrollbar scroll-smooth">
             {projects.map((project, idx) => (
               <div key={idx} className="w-[85vw] flex-shrink-0 snap-center">
-                <ProjectCard project={project} isMobile={true} />
+                <ProjectCard project={project} isMobile={true} onNavigate={handleNavigate} />
               </div>
             ))}
           </div>
@@ -150,7 +148,7 @@ export default function Portfolio() {
                 className="flex gap-6 pl-6 lg:pl-16 pr-6"
               >
                 {projects.map((project, idx) => (
-                  <ProjectCard key={idx} project={project} isMobile={false} />
+                  <ProjectCard key={idx} project={project} isMobile={false} onNavigate={handleNavigate} />
                 ))}
               </motion.div>
             </div>

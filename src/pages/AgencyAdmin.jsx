@@ -14,14 +14,6 @@ export default function AgencyAdmin() {
   const [messages, setMessages] = useState([]);
   const [selectedMessage, setSelectedMessage] = useState(null);
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      fetchMessages();
-    }
-  }, [isAuthenticated]);
-
   const fetchMessages = async () => {
     try {
       const res = await fetch('/api/messages');
@@ -33,6 +25,12 @@ export default function AgencyAdmin() {
       console.error("Failed to fetch messages:", err);
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchMessages();
+    }
+  }, [isAuthenticated]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
