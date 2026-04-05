@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInquiry } from '../context/InquiryContext';
+import ServiceModal from '../components/shared/ServiceModal';
 
 const services = [
   {
@@ -38,91 +38,6 @@ const services = [
   }
 ];
 
-function SidePanel({ service, onClose }) {
-  const { openInquiry } = useInquiry();
-  if (!service) return null;
-
-  return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={onClose}
-      className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex justify-end cursor-pointer"
-    >
-      <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ x: '100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        onClick={(e) => e.stopPropagation()}
-        className="w-full md:max-w-xl bg-brand-dark border-l border-white/10 h-full overflow-y-auto p-6 md:p-12 relative cursor-default"
-      >
-        <button 
-          onClick={onClose}
-          className="absolute top-6 right-6 md:top-8 md:right-8 text-gray-500 hover:text-white transition-colors"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-
-        <span className="text-brand-accent text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-4 block">{service.tag}</span>
-        <h2 className="text-3xl md:text-5xl font-heading font-black text-white leading-none mb-8">{service.title}</h2>
-        
-        <div className="aspect-video rounded-xl overflow-hidden mb-10 border border-white/5">
-           <img src={service.details.image} alt={service.title} className="w-full h-full object-cover" />
-        </div>
-
-        <section className="space-y-10">
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 border-b border-white/5 pb-2">Technologies Used</h4>
-            <div className="flex flex-wrap gap-2">
-              {service.details.technologies.map(t => (
-                <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-brand-accent font-medium">{t}</span>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 border-b border-white/5 pb-2">The Process</h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {service.details.process.map(p => (
-                <li key={p} className="flex items-center gap-2 text-sm text-gray-300">
-                  <div className="w-1 h-1 bg-brand-accent rounded-full" /> {p}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 border-b border-white/5 pb-2">Key Deliverables</h4>
-            <div className="space-y-3">
-              {service.details.deliverables.map(d => (
-                <div key={d} className="p-4 bg-white/[0.02] border border-white/5 rounded-lg text-sm text-gray-400 hover:border-brand-accent/20 transition-colors">
-                  {d}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="mt-16 pt-8 border-t border-white/5">
-           <button 
-             onClick={() => {
-                console.log(`[ServiceInquiry] Initializing mission for: ${service.title}`);
-                onClose();
-                openInquiry(service.title);
-             }}
-             className="w-full py-4 bg-white text-black font-bold uppercase tracking-[0.3em] text-[10px] rounded-xl hover:bg-brand-accent transition-all duration-300 flex items-center justify-center gap-2 group"
-           >
-             Start Architecture Strategy
-             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-           </button>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 export default function Services() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeService, setActiveService] = useState(null);
@@ -141,15 +56,11 @@ export default function Services() {
     <section id="services" className={`relative z-10 bg-brand-dark overflow-hidden border-y border-white/5 ${isMobile ? 'py-12' : 'py-28'}`}>
       <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
 
-      {/* Side Panel Overlay */}
-      <AnimatePresence>
-        {activeService && (
-          <SidePanel 
-            service={activeService} 
-            onClose={() => setActiveService(null)} 
-          />
-        )}
-      </AnimatePresence>
+      {/* Centralized Service Modal */}
+      <ServiceModal 
+        service={activeService} 
+        onClose={() => setActiveService(null)} 
+      />
 
       <div className="container mx-auto px-6 lg:px-16 relative z-10">
         {/* ── Section Header ── */}
