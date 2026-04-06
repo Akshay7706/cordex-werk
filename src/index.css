@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --stitch-background: #050B14;
+  --stitch-primary: #00E5FF;
+  --stitch-secondary: #3A86FF;
+  --stitch-tertiary: #7000FF;
+  --stitch-surface: #0B1C2C;
+  --stitch-surface-container-low: #08121F;
+  --stitch-font-headline: 'Space Grotesk', sans-serif;
+  --stitch-font-body: 'Inter', sans-serif;
+  --stitch-font-label: 'Inter', sans-serif;
+}
+
 @layer base {
   body {
     @apply bg-brand-dark text-white font-sans antialiased overflow-x-hidden selection:bg-brand-secondary selection:text-white sticky top-0;
