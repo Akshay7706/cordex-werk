@@ -61,7 +61,7 @@ export default function AbstractScene() {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none opacity-60 mix-blend-screen overflow-hidden">
+    <div className="absolute inset-0 z-0 pointer-events-none opacity-60 mix-blend-screen overflow-hidden max-w-full">
       <Canvas camera={{ position: [0, 0, 5], fov: 45 }} gl={{ antialias: false, alpha: true }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />

@@ -43,15 +43,17 @@ export default function Hero() {
   };
 
   return (
-    <section 
-      id="home"
-      className="relative min-h-[100svh] flex items-center justify-center pt-20 px-8 overflow-hidden bg-brand-dark"
-    >
+    <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-brand-dark">
       {/* Background Layers */}
       <Starfield />
       <div className="absolute inset-0 bg-grain z-[1]"></div>
-      <div className="absolute inset-0 bg-aurora animate-aurora z-0 opacity-30"></div>
-      <motion.div style={{ transform: gridTransform }} className="absolute inset-[-10%] w-[120%] h-[120%] bg-grid pointer-events-none z-0 opacity-20"></motion.div>
+      <div className="absolute inset-0 bg-aurora animate-aurora z-0 opacity-30 pointer-events-none"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          style={{ transform: gridTransform }} 
+          className="absolute inset-[-10%] w-[120%] h-[120%] bg-grid z-0 opacity-20"
+        ></motion.div>
+      </div>
       <AbstractScene />
       
       <div className="container mx-auto px-6 lg:px-16 pt-32 pb-20 relative z-10">

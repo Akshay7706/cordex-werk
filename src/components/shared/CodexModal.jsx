@@ -22,34 +22,47 @@ export default function CodexModal() {
           />
 
           {/* Modal Container */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-5xl h-[90vh] bg-brand-dark/95 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden mx-4 flex flex-col pointer-events-auto z-10"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-4xl h-[90vh] bg-brand-dark/95 border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col mx-4"
           >
-            <div className="relative z-20 flex flex-col h-full">
-              {/* Top Navigation Bar */}
-              <div className="px-8 py-6 border-b border-white/5 bg-white/[0.02] flex items-center justify-between">
-                <div className="flex items-center gap-6">
-                  <button 
-                    onClick={closeCodex}
-                    className="flex items-center gap-3 text-[10px] font-bold text-gray-400 hover:text-brand-accent transition-colors uppercase tracking-[0.2em]"
-                  >
-                    <ArrowRight className="w-4 h-4 rotate-180" /> Back
-                  </button>
-                  <div className="h-4 w-[1px] bg-white/10 hidden md:block" />
-                  <div className="hidden md:flex items-center gap-4">
-                    <div className="w-8 h-8 rounded-lg bg-brand-accent/10 flex items-center justify-center text-brand-accent">
-                      <BookOpen className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h3 className="text-[10px] font-bold text-white uppercase tracking-widest">{currentArticle.category}</h3>
-                    </div>
-                  </div>
-                </div>
+            {/* Close Button - Optimized for Mobile */}
+            <div className="absolute top-4 right-4 md:top-8 md:right-8 z-[10002]">
+              <button 
+                onClick={closeCodex}
+                className="w-12 h-12 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all backdrop-blur-md"
+              >
+                <X className="w-6 h-6 md:w-6 md:h-6" />
+              </button>
+            </div>
 
-                <div className="flex items-center gap-4">
+            {/* Header / Top Bar */}
+            <div className="flex items-center justify-between px-8 py-6 border-b border-white/5 bg-white/[0.02]">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                  <BookOpen className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white uppercase tracking-widest">Intelligence Analysis</h3>
+                  <p className="text-[10px] text-gray-500 uppercase tracking-widest leading-none mt-1">{currentArticle.category}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Scrollable Content */}
+            <div className="flex-1 overflow-y-auto px-8 md:px-16 py-12 custom-scrollbar">
+              <div className="max-w-3xl mx-auto">
+                {/* Meta Metadata */}
+                <div className="flex flex-wrap items-center gap-6 mb-10 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-3 h-3 text-brand-accent" /> {currentArticle.date}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-3 h-3 text-brand-accent" /> {currentArticle.readTime}
+                  </div>
                   <div className="flex items-center gap-2">
                      <span className="w-1 h-1 rounded-full bg-gray-700" />
                      Author: Cordex Engineering
