@@ -27,7 +27,7 @@ export default function ServiceModal({ service, onClose }) {
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl max-h-[95vh] bg-brand-dark/50 border border-white/10 rounded-[2rem] md:rounded-[2.5rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col pointer-events-auto mx-4"
+            className="relative w-full max-w-4xl max-h-[95vh] bg-brand-dark/50 border border-white/10 rounded-[2rem] md:rounded-[2.5rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col pointer-events-auto z-50 mx-4"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 md:px-8 py-6 border-b border-white/5 bg-white/[0.02]">
@@ -42,7 +42,7 @@ export default function ServiceModal({ service, onClose }) {
               </div>
               <button 
                 onClick={onClose}
-                className="w-12 h-12 md:w-10 md:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                className="w-12 h-12 md:w-10 md:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all z-[60]"
               >
                 <X className="w-6 h-6 md:w-5 md:h-5" />
               </button>

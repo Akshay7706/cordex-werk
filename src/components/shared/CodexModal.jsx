@@ -27,7 +27,7 @@ export default function CodexModal() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl h-[90vh] bg-brand-dark/95 border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col mx-4"
+            className="relative w-full max-w-4xl h-[90vh] bg-brand-dark/95 border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col mx-4 pointer-events-auto z-50"
           >
             {/* Close Button - Optimized for Mobile */}
             <div className="absolute top-4 right-4 md:top-8 md:right-8 z-[10002]">

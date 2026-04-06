@@ -28,13 +28,15 @@ export default function Starfield() {
       });
     }
 
+    // Pre-calculate gradient for performance
+    const grad = ctx.createLinearGradient(0, 0, 0, height);
+    grad.addColorStop(0, '#050B14');
+    grad.addColorStop(1, '#0B1C2C');
+
     const render = () => {
       ctx.clearRect(0, 0, width, height);
       
-      // Draw subtle background gradient
-      const grad = ctx.createLinearGradient(0, 0, 0, height);
-      grad.addColorStop(0, '#050B14');
-      grad.addColorStop(1, '#0B1C2C');
+      // Draw cached background gradient
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, width, height);
 
@@ -49,20 +51,19 @@ export default function Starfield() {
         }
 
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        
-        // Pulsating opacity effect
         const currentOpacity = star.opacity * (0.5 + 0.5 * Math.sin(Date.now() * 0.001 * star.speed * 10));
         ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
         
+        // Use a simple arc without shadowBlur for maximum performance
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fill();
         
-        // Slight glow for bigger stars
+        // Add a secondary glow pass only for very large stars using a larger radius instead of shadowBlur
         if (star.radius > 1.2) {
-          ctx.shadowBlur = 4;
-          ctx.shadowColor = 'rgba(0, 229, 255, 0.8)';
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius * 2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0, 229, 255, ${currentOpacity * 0.3})`;
           ctx.fill();
-          ctx.shadowBlur = 0; // Reset
         }
       });
 

@@ -62,7 +62,11 @@ export default function AbstractScene() {
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none opacity-60 mix-blend-screen overflow-hidden max-w-full">
-      <Canvas camera={{ position: [0, 0, 5], fov: 45 }} gl={{ antialias: false, alpha: true }}>
+      <Canvas 
+        camera={{ position: [0, 0, 5], fov: 45 }} 
+        dpr={[1, 2]} // Performance: limit high-density rendering
+        gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
+      >
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
         <directionalLight position={[-10, -10, -5]} color="#00E5FF" intensity={2} />
