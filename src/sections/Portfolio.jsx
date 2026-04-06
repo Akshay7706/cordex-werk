@@ -3,7 +3,6 @@ import { ArrowUpRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ScrambleText from '../components/shared/ScrambleText';
 import React, { useRef, useState, useEffect } from 'react';
-import { useInquiry } from '../context/InquiryContext';
 
 // Placeholder image paths - assuming the user has these or similar assets
 const project1 = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800';
@@ -20,21 +19,7 @@ const projects = [
     problem: 'Low onboarding completion rates due to a complex 12-step verification process.',
     result: 'Reduced time-to-onboard by 8m, leading to a massive increase in funded accounts.',
     img: project1,
-    path: '/portfolio/fintech-landing',
-    gallery: [
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-      'aura_fintech_dashboard_detailed_1775402391780.png'
-    ],
-    stats: [
-      { name: 'Jan', value: 400 }, { name: 'Feb', value: 600 }, { name: 'Mar', value: 800 },
-      { name: 'Apr', value: 1200 }, { name: 'May', value: 1500 }, { name: 'Jun', value: 2400 }
-    ],
-    techLog: [
-      'INITIALIZING_CORE_DECOMPRESSION... OK',
-      'SCANNING_FINANCIAL_ARCHITECTURE... COMPLETE',
-      'ENCRYPTING_MULTI_TENANT_LAYER... SECURE',
-      'SYNCING_REAL_TIME_ORCHESTRATOR... ACTIVE'
-    ]
+    path: '/portfolio/fintech-landing'
   },
   {
     title: 'Nexus AI Studio',
@@ -43,21 +28,7 @@ const projects = [
     problem: 'Users were dropping off after the first generation due to slow processing speeds.',
     result: 'Improved user retention and increased monthly recurring revenue by 24%.',
     img: project2,
-    path: '/portfolio/aether-ai',
-    gallery: [
-      'https://images.unsplash.com/photo-1620825937374-87fc7d6aaf8e?auto=format&fit=crop&q=80&w=800',
-      'nexus_ai_studio_detailed_1775402442656.png'
-    ],
-    stats: [
-      { name: 'Jan', value: 90 }, { name: 'Feb', value: 85 }, { name: 'Mar', value: 70 },
-      { name: 'Apr', value: 55 }, { name: 'May', value: 45 }, { name: 'Jun', value: 40 }
-    ],
-    techLog: [
-      'BOOTING_INTELLIGENCE_ENGINE... READY',
-      'ORCHESTRATING_NODE_GRAPH... MAPPED',
-      'MODEL_QUANTIZATION_V4... APPLIED',
-      'LATENCY_COMPENSATION... OPTIMIZED'
-    ]
+    path: '/portfolio/aether-ai'
   },
   {
     title: 'Skyward Enterprise',
@@ -66,21 +37,7 @@ const projects = [
     problem: 'Critical data insights were inaccessible to field agents on mobile devices.',
     result: 'Daily active users among executive stakeholders increased from 15% to 85%.',
     img: project3,
-    path: '/portfolio/saas-dashboard',
-    gallery: [
-      'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800',
-      'skyward_analytics_detailed_v231_1775402488794.png'
-    ],
-    stats: [
-      { name: 'V1', value: 15 }, { name: 'V2', value: 35 }, { name: 'V3', value: 60 },
-      { name: 'V4', value: 85 }, { name: 'V5', value: 100 }
-    ],
-    techLog: [
-      'MAP_PROJECTION_V2... RENDERED',
-      'DATA_DENSITY_COMPRESSION... SUCCESS',
-      'GEO_SPATIAL_ORCHESTRATION... ACTIVE',
-      'EXECUTIVE_DASHBOARD_MIRROR... SYNCED'
-    ]
+    path: '/portfolio/saas-dashboard'
   }
 ];
 
@@ -142,16 +99,13 @@ const ProjectCard = ({ project, isMobile, onNavigate }) => (
 
 export default function Portfolio() {
   const targetRef = useRef(null);
+  const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
-  const { openProject } = useInquiry();
   const { scrollYProgress } = useScroll({ target: isMobile ? null : targetRef });
 
   const handleNavigate = (path, title) => {
-    // Find the project object based on path or title
-    const project = projects.find(p => p.title === title);
-    if (project) {
-      openProject(project);
-    }
+    console.log(`[Portfolio] User requested Analysis: ${title} (${path})`);
+    navigate(path);
   };
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
@@ -163,40 +117,39 @@ export default function Portfolio() {
   const x = useTransform(scrollYProgress, [0, 1], ['0%', '-72%']);
 
   return (
-    <section id="portfolio" ref={targetRef} className={`relative z-10 bg-brand-dark ${isMobile ? 'py-32' : 'h-[400vh]'}`}>
-      {/* Smooth Transition from Hero */}
-      <div className="absolute top-0 left-0 w-full h-32 horizon-transition pointer-events-none z-20" />
-
-      <div className={isMobile ? 'container mx-auto px-6' : 'sticky top-0 h-screen overflow-hidden flex flex-col'}>
+    <section id="portfolio" ref={targetRef} className={`relative z-10 bg-brand-dark ${isMobile ? 'py-20' : 'h-[400vh]'}`}>
+      <div className={isMobile ? 'px-6' : 'sticky top-0 h-screen overflow-hidden flex flex-col'}>
         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
         <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-secondary/10 rounded-full blur-[150px] pointer-events-none" />
 
-        <div className={`relative z-10 flex-shrink-0 ${isMobile ? 'mb-16' : 'px-6 lg:px-16 pt-16 pb-8'}`}>
+        <div className={`relative z-10 flex-shrink-0 ${isMobile ? 'mb-12' : 'px-6 lg:px-16 pt-16 pb-8'}`}>
           <span className="text-brand-accent text-xs font-bold tracking-[0.25em] uppercase mb-3 block">
             Selected Works
           </span>
-          <h2 className="text-4xl md:text-7xl font-heading font-black text-white tracking-tighter leading-none mb-4">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="md:hidden flex items-center gap-2 text-brand-accent text-[8px] font-bold uppercase tracking-[0.3em] mb-8"
+          >
+            <motion.div 
+              animate={{ x: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-4 h-[1px] bg-brand-accent"
+            />
+            Swipe to Explore
+          </motion.div>
+          <h2 className="text-4xl md:text-7xl font-heading font-black text-white tracking-tighter leading-none">
             <ScrambleText text="CASE" />{' '}
             <ScrambleText text="ANALYSIS." />
           </h2>
-          {isMobile && (
-             <p className="text-gray-500 text-[10px] uppercase tracking-[0.3em] font-bold">
-               Mission_Briefing_Inventory
-             </p>
-          )}
         </div>
 
         {isMobile ? (
-          <div className="relative z-10 space-y-12 pb-20">
+          <div className="relative z-10 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8 no-scrollbar scroll-smooth">
             {projects.map((project, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-              >
+              <div key={idx} className="w-[85vw] flex-shrink-0 snap-center">
                 <ProjectCard project={project} isMobile={true} onNavigate={handleNavigate} />
-              </motion.div>
+              </div>
             ))}
           </div>
         ) : (

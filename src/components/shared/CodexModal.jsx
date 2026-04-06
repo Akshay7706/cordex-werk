@@ -98,6 +98,7 @@ export default function CodexModal() {
                     </p>
                     <button 
                       onClick={() => {
+                        console.log(`[CodexViewer] Bridging to Inquiry: ${currentArticle.title}`);
                         closeCodex();
                         setTimeout(() => openInquiry(`Consultation: ${currentArticle.title}`), 400);
                       }}

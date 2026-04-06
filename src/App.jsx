@@ -16,7 +16,6 @@ import MagneticCursor from './components/shared/MagneticCursor';
 import { InquiryProvider } from './context/InquiryContext';
 import InquiryModal from './components/shared/InquiryModal';
 import CodexModal from './components/shared/CodexModal';
-import ProjectModal from './components/shared/ProjectModal';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -46,7 +45,7 @@ function App() {
   const [loaderDone, setLoaderDone] = useState(false);
 
   useEffect(() => {
-    // Initializing
+    console.log('%c[CORDEX WERK] Systems Initialized.', 'color: #3A86FF; font-weight: bold; font-size: 14px;');
   }, []);
 
   return (
@@ -59,7 +58,6 @@ function App() {
       </BrowserRouter>
       <InquiryModal />
       <CodexModal />
-      <ProjectModal />
     </InquiryProvider>
   );
 }

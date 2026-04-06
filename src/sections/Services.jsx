@@ -102,6 +102,7 @@ export default function Services() {
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => {
+                  console.log(`[ServiceClick] User exploring: ${service.title}`);
                   setActiveService(service);
                 }}
                 className={`group relative border-t border-white/10 ${isMobile ? 'py-6' : 'py-10'} cursor-pointer`}
