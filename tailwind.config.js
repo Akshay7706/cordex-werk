@@ -7,55 +7,34 @@ export default {
   theme: {
     extend: {
       colors: {
-        stitch: {
-          background: 'var(--stitch-background)',
-          primary: 'var(--stitch-primary)',
-          secondary: 'var(--stitch-secondary)',
-          tertiary: 'var(--stitch-tertiary)',
-          surface: 'var(--stitch-surface)',
-          'surface-container-low': 'var(--stitch-surface-container-low)',
-          'surface-container': 'var(--stitch-surface-container)',
-          'surface-container-high': 'var(--stitch-surface-container-high)',
-          'surface-container-highest': 'var(--stitch-surface-container-highest)',
-          'outline-variant': 'var(--stitch-outline-variant)',
-        },
         brand: {
-          dark: 'var(--stitch-background)',
-          primary: 'var(--stitch-surface-container-low)',
-          secondary: 'var(--stitch-secondary)',
-          accent: 'var(--stitch-primary)',
-          glow: 'rgba(164, 165, 255, 0.4)',
+          bg: '#000000', // pure black
+          surface: '#111111', // dark gray
+          primary: '#FFFFFF', // pure white
+          secondary: '#888888', // medium gray
+          accent: '#E60000', // vivid crimson
+          hover: '#990000', // dark crimson
         }
       },
       fontFamily: {
-        sans: ['var(--stitch-font-body)', 'Inter', 'sans-serif'],
-        heading: ['var(--stitch-font-headline)', 'Space Grotesk', 'sans-serif'],
-        label: ['var(--stitch-font-label)', 'Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        serif: ['Playfair Display', 'serif'],
+        sans: ['DM Sans', 'sans-serif'],
       },
-      backgroundImage: {
-        'space-gradient': 'linear-gradient(to bottom, #050B14, #0B1C2C)',
-        'glass-gradient': 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)',
-        'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)',
-        'grid-pattern-glow': 'radial-gradient(circle at center, rgba(58, 134, 255, 0.15) 0%, transparent 70%)',
+      spacing: {
+        '2xl': '2rem',
+        '3xl': '3rem',
+        '4xl': '4rem',
+        '5xl': '5rem',
+        '6xl': '6rem',
       },
-      keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        }
+      fontSize: {
+        '8xl': '6rem',
+        '9xl': '8rem',
+        '10xl': '10rem',
+        '11xl': '12rem',
+        '12xl': '14rem',
       },
-      animation: {
-        'slow-spin': 'spin 20s linear infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'marquee': 'marquee 25s linear infinite',
-        'float': 'float 6s ease-in-out infinite',
-      }
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 }

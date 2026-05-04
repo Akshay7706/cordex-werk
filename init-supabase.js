@@ -97,7 +97,7 @@ async function initSupabase() {
     // Seed Admin User
     const usersRes = await client.query('SELECT COUNT(*) as count FROM users');
     if (parseInt(usersRes.rows[0].count) === 0) {
-      await client.query("INSERT INTO users (email, password, role) VALUES ('admin@cordex.com', 'admin123', 'admin')");
+      await client.query("INSERT INTO users (email, password, role) VALUES ('admin@kreatospace.com', 'admin123', 'admin')");
       console.log('Seeded default admin user.');
     }
 
